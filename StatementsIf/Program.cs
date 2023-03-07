@@ -23,7 +23,7 @@ byte number = Convert.ToByte(Console.ReadLine());
 
 
 
-string? message = (number % 2 == 0) ? "çifttir" : "tektir"; // Ternary operation.
+string? message = (number % 2 == 0) ? "çifttir" : "tektir"; // Ternary operators.
 
 Console.WriteLine($"deger {message}");
 
