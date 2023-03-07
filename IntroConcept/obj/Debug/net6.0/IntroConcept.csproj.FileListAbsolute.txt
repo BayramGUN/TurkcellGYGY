@@ -1,0 +1,15 @@
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\bin\Debug\net6.0\IntroConcept.exe
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\bin\Debug\net6.0\IntroConcept.deps.json
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\bin\Debug\net6.0\IntroConcept.runtimeconfig.json
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\bin\Debug\net6.0\IntroConcept.dll
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\bin\Debug\net6.0\IntroConcept.pdb
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\IntroConcept.csproj.AssemblyReference.cache
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\IntroConcept.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\IntroConcept.AssemblyInfoInputs.cache
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\IntroConcept.AssemblyInfo.cs
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\IntroConcept.csproj.CoreCompileInputs.cache
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\IntroConcept.dll
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\refint\IntroConcept.dll
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\IntroConcept.pdb
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\IntroConcept.genruntimeconfig.cache
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\IntroConcept\obj\Debug\net6.0\ref\IntroConcept.dll
