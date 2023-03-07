@@ -1,0 +1,15 @@
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\StatementsIf.csproj.AssemblyReference.cache
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\StatementsIf.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\StatementsIf.AssemblyInfoInputs.cache
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\StatementsIf.AssemblyInfo.cs
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\StatementsIf.csproj.CoreCompileInputs.cache
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\bin\Debug\net6.0\StatementsIf.exe
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\bin\Debug\net6.0\StatementsIf.deps.json
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\bin\Debug\net6.0\StatementsIf.runtimeconfig.json
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\bin\Debug\net6.0\StatementsIf.dll
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\bin\Debug\net6.0\StatementsIf.pdb
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\StatementsIf.dll
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\refint\StatementsIf.dll
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\StatementsIf.pdb
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\StatementsIf.genruntimeconfig.cache
+C:\Users\bayram\Desktop\dotnet\TurkcellGYGY\StatementsIf\obj\Debug\net6.0\ref\StatementsIf.dll
