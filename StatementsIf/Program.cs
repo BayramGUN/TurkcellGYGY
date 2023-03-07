@@ -26,3 +26,6 @@ byte number = Convert.ToByte(Console.ReadLine());
 string? message = (number % 2 == 0) ? "çifttir" : "tektir"; // Ternary operation.
 
 Console.WriteLine($"deger {message}");
+
+string? greeting = DateTime.Now.Hour <= 16 ? "Have a Good Day" : "Good Evening";
+Console.WriteLine(greeting);
