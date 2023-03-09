@@ -2,9 +2,12 @@
 
 Console.WriteLine("Choise a geometric shape (square, circle, triangle)");
 
-string? geometry = Convert.ToString(Console.ReadLine()).ToLower();
+string? geometry = string.Empty;
 
-switch(geometry) {
+geometry =  Convert.ToString(Console.ReadLine().ToLower());
+
+
+switch(geometry) { // for use enums and absulute equalities 
     case "square": 
         Console.WriteLine("square root of an edge");
     break;
@@ -19,7 +22,7 @@ switch(geometry) {
     break;
 }
 
-switch (DateTime.Now.DayOfWeek)
+/* switch (DateTime.Now.DayOfWeek)
 {
     case DayOfWeek.Sunday:
     break;  
@@ -35,4 +38,23 @@ switch (DateTime.Now.DayOfWeek)
     break;  
     default:
     break;  
+} */
+
+
+Console.WriteLine("Choise a symbol (fly, tile, hearts, spades)");
+
+string? symbol = Convert.ToString(Console.ReadLine().ToLower());
+
+switch(symbol) {
+
+    case "fly" or "spades":
+        Console.WriteLine("they are black");
+        break;
+    case "tile":
+    case "hearts":
+        Console.WriteLine("they are red");
+        break;
+    default:
+        break;
+
 }
