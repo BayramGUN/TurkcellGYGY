@@ -1,15 +1,11 @@
-﻿/*
-
-    
-
-*/
-
+﻿
 int[] numbers = {882 ,390, 122, 4, 6, -6, 10, -11, -120, 120, 415, -220, 416, -52, -760};
 
 int maxValue = Int32.MinValue;
 
 int j = 0;
-while(j < numbers.Length) {
+while(j < numbers.Length) 
+{
     if (maxValue < numbers[j]) maxValue = numbers[j];
 
     j++;
@@ -28,7 +24,8 @@ Console.WriteLine($"founded {maxValue} as the greatest number of array by for lo
 int minValue = Int32.MaxValue;
 
 j = 0;
-while(j < numbers.Length) {
+while(j < numbers.Length) 
+{
     if (minValue > numbers[j]) minValue = numbers[j];
 
     j++;
@@ -41,7 +38,8 @@ Console.WriteLine($"founded {minValue} as the lowest number of array by while lo
 // reset default values to for loop example
 minValue = Int32.MaxValue;
 
-for(int i = 0; i < numbers.Length; i++) {
+for(int i = 0; i < numbers.Length; i++) 
+{
     if (minValue > numbers[i]) minValue = numbers[i];
 }
 
@@ -67,9 +65,11 @@ Console.WriteLine();
 Console.WriteLine("Unsorted array:");
 PrintArray(numbers);
 
-for(int i = 0; i < numbers.Length; i++) {
+for(int i = 0; i < numbers.Length; i++) 
+{
     for (int k = 0; k < numbers.Length - i - 1; k++)
-        if(numbers[k] > numbers[k + 1]) {
+        if(numbers[k] > numbers[k + 1]) 
+        {
             int template = numbers[k];
             numbers[k] = numbers[k + 1];
             numbers[k + 1] = template;
