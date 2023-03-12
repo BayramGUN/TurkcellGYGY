@@ -1,5 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
-/* Console.WriteLine("Please enter a suggest:");
+Console.WriteLine("Please enter a suggest:");
 
 bool isWin = false;
 
@@ -22,7 +22,7 @@ while(!isWin)
         Console.WriteLine("Congrats!");
     } 
 }
- */
+
 
 
 int[] numbers = { 13, 46, 0, 1, 18, -9};
