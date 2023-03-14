@@ -7,19 +7,19 @@ public class Bread
 
     public Bread() : this(1, "Somun Eppeh")
     {
-        Piece = 1;
-        Species = "Leaf Bread";
+       /*  Piece = 1;
+        Species = "Leaf Bread"; */
     }
 
-    public Bread(int piece)
+    public Bread(int piece) : this(piece, "Somun Eppah")
     {
-        Piece = piece;
-        Species = "Leaf Bread";
+        /* Piece = piece;
+        Species = "Leaf Bread"; */
     }
-    public Bread(string species)
-    {
-        Piece = 1;
-        Species = species;
+    public Bread(string species) : this(1, species)
+    { 
+        /* Piece = 1;
+        Species = species; */
     }
     public Bread(int piece, string species)
     {

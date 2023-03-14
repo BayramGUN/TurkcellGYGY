@@ -1,13 +1,13 @@
 ﻿
-int[] numbers = {882 ,390, 122, 4, 6, -6, 10, -11, -120, 120, 415, -220, 416, -52, -760};
+int[] numbers = { 882 ,390, 122, 4, 6, -6, 10, -11, -120, 120, 415, -220, 416, -52, -760 };
 
 int maxValue = Int32.MinValue;
 
 int j = 0;
 while(j < numbers.Length) 
 {
-    if (maxValue < numbers[j]) maxValue = numbers[j];
-
+    if (maxValue < numbers[j]) 
+        maxValue = numbers[j];
     j++;
 }
 
@@ -24,10 +24,10 @@ Console.WriteLine($"founded {maxValue} as the greatest number of array by for lo
 int minValue = Int32.MaxValue;
 
 j = 0;
+
 while(j < numbers.Length) 
 {
     if (minValue > numbers[j]) minValue = numbers[j];
-
     j++;
 }
 
@@ -81,6 +81,7 @@ Console.WriteLine("Sorted array:");
 PrintArray(numbers);
 
 
+// Function to the print arrays
 void PrintArray(int[] array)
 {
     for(int i = 0; i < array.Length; i++) 

@@ -14,16 +14,19 @@ List<string> shoppingCart = new List<string>();
 
 char character = Convert.ToChar(Console.ReadLine().ToLower());
 
-
+productList.ForEach(x =>  {
+    Console.WriteLine(x.GetType()); 
+});
+/* 
 foreach(var product in productList)
 {
-    foreach(var c in product.ToLower())
-        if(c == character){
+    foreach(var ch in product.ToLower())
+        if(ch == character){
             shoppingCart.Add(product);
             break;
         }
 }
-
+ */
 foreach(string entity in shoppingCart)
 {
     productList.Remove(entity);

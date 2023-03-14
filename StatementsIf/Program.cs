@@ -13,15 +13,19 @@ else Console.WriteLine("Who the fuck are you?");
 
 Console.WriteLine("Hangi aydayız?");
 
-string? month = Convert.ToString(Console.ReadLine()).ToLower();
+string? month = string.Empty;
+
+month = Convert.ToString(Console.ReadLine());
+if(month is not null) month.ToLower();
+else throw new ArgumentNullException();
 
 if(month == "mart" || month == "nisan" || month == "mayis") Console.WriteLine($"{month} ayi ilkbahar ayidir.");
 else if(month == "haziran" || month == "temmuz" || month == "agustos") Console.WriteLine($"{month} ayi yaz ayidir.");
 else Console.WriteLine("kista kalmissin");
 
+
+Console.WriteLine("Deger gir:");
 byte number = Convert.ToByte(Console.ReadLine());
-
-
 
 string? message = (number % 2 == 0) ? "çifttir" : "tektir"; // Ternary operators.
 
