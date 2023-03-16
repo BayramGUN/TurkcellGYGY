@@ -15,7 +15,7 @@ public class Product
         return price;
     }
 
-    private string name;
+    private string? name = string.Empty;
 
     public string Name 
     {
