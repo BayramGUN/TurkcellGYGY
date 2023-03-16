@@ -12,18 +12,33 @@ if(password.Length >= 6)
 {
     foreach(char ch in password) 
     {
-        if(char.IsDigit(ch)) hasDigit = true;
-        else if(char.IsLetter(ch)) hasLetter = true;
-        if(!char.IsLetterOrDigit(ch)) 
+        Console.WriteLine("dongu");
+        if(char.IsDigit(ch) & !hasDigit) 
+        {
+            hasDigit = true;
+            Console.WriteLine($"'{ch}' is a digit: {hasDigit}");
+        }
+        if(char.IsLetter(ch) & !hasLetter) 
+        {
+            hasLetter = true;
+            Console.WriteLine($"'{ch}' is a letter: {hasLetter}");
+        }
+        if(!char.IsLetterOrDigit(ch) & !hasSymbol) 
         {
             hasSymbol = true;
+            Console.WriteLine($"'{ch}' is not a letter or digit: {hasSymbol}");
         }
         else 
             hasLetterOrDigit = true;
+        if(hasDigit & hasLetter & hasSymbol) break;
+    
     }
 }
 else 
     Console.WriteLine("Please enter new password includes min. 6 character");
+
+
+Console.WriteLine(hasLetterOrDigit);
 
 if(hasLetter && hasDigit && hasSymbol)
     Console.WriteLine("Password is strength!");
