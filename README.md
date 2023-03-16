@@ -1,1 +1,1 @@
-Look up to HomeWorks file to see the homeworks.
+Look up to Homeworks file to see the homeworks.
