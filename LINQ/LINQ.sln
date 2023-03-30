@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqIntro", "LinqIntro\Linq
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "ExtensionMethods\ExtensionMethods.csproj", "{20E6BEC5-C363-48EE-B754-A627EFEB2D5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetPasswordStrength", "GetPAsswordStrength\GetPasswordStrength.csproj", "{6841B0CA-841D-418E-BBE0-E8DBC81E3BE6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{20E6BEC5-C363-48EE-B754-A627EFEB2D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20E6BEC5-C363-48EE-B754-A627EFEB2D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20E6BEC5-C363-48EE-B754-A627EFEB2D5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6841B0CA-841D-418E-BBE0-E8DBC81E3BE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6841B0CA-841D-418E-BBE0-E8DBC81E3BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6841B0CA-841D-418E-BBE0-E8DBC81E3BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6841B0CA-841D-418E-BBE0-E8DBC81E3BE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
