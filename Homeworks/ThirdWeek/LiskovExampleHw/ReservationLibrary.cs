@@ -2,9 +2,9 @@ namespace LiskovExampleHw;
 
 public static class ReservationLibrary 
 {
-    public static IValidation ValidationFactory(int roomCapacity, int? saloonCapacity)
+    public static IReservable ReservationFactory()
     {
-        if(saloonCapacity.HasValue) return new ConferanceRoomValidation();
-        return new HotelRoomValidation();
+
+        return new HotelRoomReservation();
     }
 }

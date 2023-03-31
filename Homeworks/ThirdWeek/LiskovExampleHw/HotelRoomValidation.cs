@@ -1,14 +1,18 @@
 namespace LiskovExampleHw;
 
-public class HotelRoomValidation : IValidation
+public class SuitValidation : IValidation
 {
-    //private HotelRoom hotelRoom = new HotelRoom();
-    public HotelRoomValidation()
+
+    public SuitValidation()
     {
 
     }
     public bool IsDayValid(DateTime from, DateTime? to)
     {
+        if (from < DateTime.Now || from < DateTime.MinValue)
+            return false;
+        else if(to.HasValue & ((to < DateTime.Now) || to > DateTime.MaxValue))
+            return false;
         return true;
     }
     public bool IsAvailableValid()
@@ -20,9 +24,31 @@ public class HotelRoomValidation : IValidation
         return true;
     }
 }
-public class ConferanceRoomValidation : IValidation
+public class ConferenceRoomValidation : IValidation
 {
-    public ConferanceRoomValidation()
+    public ConferenceRoomValidation()
+    {
+        
+    }
+    public bool IsDayValid(DateTime from, DateTime? to)
+    {
+
+        return true; 
+    }
+    public bool IsAvailableValid()
+    {
+
+        return true; 
+    }
+    public bool IsCapacityValid()
+    {
+
+        return true; 
+    }
+}
+public class MeetingRoomValidation : IValidation
+{
+    public MeetingRoomValidation()
     {
         
     }
