@@ -1,7 +1,5 @@
 using SchoolManagement.ClientModule.GetInput;
 using SchoolManagement.ClientModule.GetInput.DataMap;
-using SchoolManagement.ClientModule.Validations;
-using SchoolManagement.DataModule.Models;
 using SchoolManagement.ServiceModule.Services.StudentService;
 
 namespace SchoolManagement.ClientModule.StudentClient;
@@ -26,16 +24,43 @@ public class StudentClient
             Console.WriteLine(er.Message);
         }
     }
-    public List<Student> GetAllStudents()
+    public void GetAllStudents()
     {
-        return _service!.GetAll();
+        _service!.GetAll().ForEach(e => e.SendToWrite());
+    }
+    public void GetStudentById(int id)
+    {
+        var student = _service!.GetById(id);
+        student.SendToWrite(); 
     }
     public void UpdateStudent(int id, GetStudentInput updateStudentInput)
     {
         var student = new StudentDataMap().StudentInputToStudent(updateStudentInput);
-           try
+        try
         {
             _service!.Update(id, student);
+        }
+        catch(Exception er)
+        {
+            Console.WriteLine(er.Message);
+        }
+    }
+    public void RemoveStudent(int id)
+    {
+        try
+        {
+            _service!.Romove(id);
+        }
+        catch(Exception er)
+        {
+            Console.WriteLine(er.Message);
+        }
+    }
+    public void RemoveStudentByName(string name)
+    {
+        try
+        {
+            _service!.RemovePersonByName(name);
         }
         catch(Exception er)
         {

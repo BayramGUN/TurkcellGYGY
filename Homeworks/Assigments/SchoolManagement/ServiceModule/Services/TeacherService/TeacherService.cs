@@ -1,8 +1,9 @@
+/*  */
 
 using SchoolManagement.DataModule.DataProviders;
 using SchoolManagement.DataModule.Models;
-
-namespace SchoolManagement.ServiceModule.Services.TeacherService;
+using SchoolManagement.ServiceModule.Services;
+using SchoolManagement.ServiceModule.Services.TeacherService;
 
 public class TeacherService : ITeacherService
 {

@@ -64,13 +64,12 @@ GetStudentInput studentInput = new GetStudentInput();
 IStudentDataProvider dataProvider = new StudentDataProvider(); 
 IStudentService service = new StudentService(dataProvider);
 StudentClient studentClient = new StudentClient(service); 
-RequestPrinter request = new AddRequest();
-char choise = ' ';
-while(choise != 'Q')
+string choise = string.Empty;
+while(choise != "quit")
 {
     try
     {
-        choise = "Lütfen İşlem seçiniz (1-Add student, 2-List students, q- quit) \n".GetChar();
+        choise = "Please write student operation that you want to make (to quit 'quit')\n".GetString().ToLower();
     }
     catch(Exception err)
     {
@@ -78,23 +77,37 @@ while(choise != 'Q')
     }
     switch(choise)
     {
-        case '1':
-            request.PrintRequest("student");
+        case "add student":
             StudentAdd();
         break;
-        case '2':
-            request = new GetAllRequest();
-            request.PrintRequest("student");
+        case "get all students data":
             StudentList();
         break;
-        case '3':
-            request = new UpdateRequest();
-            request.PrintRequest("student");
+        case "update student by id":
             UpdateStudent();
+        break;
+        case "get student by id":
+            GetStudentById();
+        break;
+        case "remove student by id":
+            RemoveStudent();
         break;
     }
 }
- 
+
+void GetStudentById()
+{
+    int id = "Enter id value of student that you want to see: ".GetInt();
+
+    try
+    { 
+        studentClient.GetStudentById(id);
+    }
+    catch(Exception er)
+    {
+        Console.WriteLine(er.Message);
+    }
+}
 void StudentAdd(){
     
 
@@ -114,7 +127,7 @@ void StudentList()
 {   
     try
     { 
-        studentClient.GetAllStudents().ForEach(x => Console.WriteLine($"data: {x.Name} {x.Surname}"));
+        studentClient.GetAllStudents();
     }
     catch(Exception er)
     {
@@ -134,4 +147,19 @@ void UpdateStudent()
     {
         Console.WriteLine(er.Message);
     }
+}
+
+void RemoveStudent()
+{
+    int id = "Enter id value of student that you want to remove: ".GetInt();
+    studentInput.GetAllInputs();
+    try
+    { 
+        studentClient.RemoveStudent(id);
+    }
+    catch(Exception er)
+    {
+        Console.WriteLine(er.Message);
+    }
+
 }

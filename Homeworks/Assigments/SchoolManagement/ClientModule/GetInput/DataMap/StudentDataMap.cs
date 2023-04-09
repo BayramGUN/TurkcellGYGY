@@ -6,8 +6,8 @@ public class StudentDataMap
 {
     public Student StudentInputToStudent(GetStudentInput studentInput)
     {
-       Student student = new Student {
-            Id = new IdGenerator().GenerateId(),
+        Student student = new Student {
+            Id = new IdGenerator().GenarateId(),
             Name = studentInput.Name,
             Surname = studentInput.Surname,
             IdentityNumber = studentInput.IdentityNumber,

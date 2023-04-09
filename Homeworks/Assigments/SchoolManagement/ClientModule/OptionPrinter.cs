@@ -1,34 +1,34 @@
-namespace SchoolManagement.ClientModule;
+/* namespace SchoolManagement.ClientModule;
 
-public abstract class RequestPrinter
+public interface IRequest
 {
-    public abstract string Request { get; }
-    public virtual void PrintRequest(string option)
+    public string RequestType { get; }
+}
+
+public abstract class AddRequest : IRequest
+{
+    public string RequestType => "Add";
+    public AddRequest()
     {
-        Console.WriteLine($"{this.Request} {option}");
+
     }
 }
 
-public class AddRequest : RequestPrinter
+public class GetRequest : Request
 {
-    public override string Request => "Add"; 
-}
-
-public class GetRequest : RequestPrinter
-{
-    public override string Request => "Get";
+    public override string RequestType => "Get";
 
 }
-public class GetAllRequest : RequestPrinter
+public class GetAllRequest : Request
 {
-    public override string Request => "Get all";
+    public override string RequestType => "Get all";
 
 }
-public class RemoveRequest : RequestPrinter
+public class RemoveRequest : Request
 {
-    public override string Request => "Remove";
+    public override string RequestType => "Remove";
 }
-public class UpdateRequest : RequestPrinter
+public class UpdateRequest : Request
 {
-    public override string Request => "Update";
-}
+    public override string RequestType => "Update";
+} */
