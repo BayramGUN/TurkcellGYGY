@@ -1,5 +1,6 @@
 using SchoolManagement.ClientModule.GetInput;
 using SchoolManagement.ClientModule.GetInput.DataMap;
+using SchoolManagement.DataModule.Models;
 using SchoolManagement.ServiceModule.Services.StudentService;
 
 namespace SchoolManagement.ClientModule.StudentClient;
@@ -11,28 +12,25 @@ public class StudentClient
     {
         _service = service;
     }
-    public void AddStudent(GetStudentInput studentInput)
-    {
-        
-        var student = new StudentDataMap().StudentInputToStudent(studentInput);
-        try
-        {
-            _service!.Add(student);
-        }
-        catch(Exception er)
-        {
-            Console.WriteLine(er.Message);
-        }
-    }
-    public void GetAllStudents()
-    {
-        _service!.GetAll().ForEach(e => e.SendToWrite());
-    }
-    public void GetStudentById(int id)
+    
+    public List<Student> GetAllStudents() => _service!.GetAll();
+    public Student GetStudentById(int id) => _service!.GetById(id); 
+    
+    public void RemoveStudent(int id) => _service!.Romove(id);
+    
+    public void RemoveStudentByName(string name) => _service!.RemovePersonByName(name);
+
+    public void AddCourse(int id, string courseName)
     {
         var student = _service!.GetById(id);
-        student.SendToWrite(); 
+        var course = new DataModule.Models.Course(){
+            Id = new IdGenerator().GenarateId(),
+            Name = courseName,
+
+        };
+        student?.Courses!.Add(course);
     }
+
     public void UpdateStudent(int id, GetStudentInput updateStudentInput)
     {
         var student = new StudentDataMap().StudentInputToStudent(updateStudentInput);
@@ -45,22 +43,13 @@ public class StudentClient
             Console.WriteLine(er.Message);
         }
     }
-    public void RemoveStudent(int id)
+    public void AddStudent(GetStudentInput studentInput)
     {
+        
+        var student = new StudentDataMap().StudentInputToStudent(studentInput);
         try
         {
-            _service!.Romove(id);
-        }
-        catch(Exception er)
-        {
-            Console.WriteLine(er.Message);
-        }
-    }
-    public void RemoveStudentByName(string name)
-    {
-        try
-        {
-            _service!.RemovePersonByName(name);
+            _service!.Add(student);
         }
         catch(Exception er)
         {

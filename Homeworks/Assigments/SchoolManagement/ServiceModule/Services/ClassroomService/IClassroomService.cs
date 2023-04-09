@@ -5,6 +5,7 @@ namespace SchoolManagement.ServiceModule.Services.ClassroomService;
 
 public interface IClassroomService : IService<Classroom>
 {
-    public void AddStudentToClassroom(char name, Student student);
-    public void AssignTeacherToClassroom(char name, Teacher teacher);
+    public void AddStudentInToClassroom(char name, int studentId);
+    public void AssignTeacherToClassroom(char name, int teacherId);
+    public Student GetStudentInClassroom(int id, char classroom);
 }

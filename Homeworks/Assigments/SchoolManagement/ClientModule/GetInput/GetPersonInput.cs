@@ -1,7 +1,4 @@
-using SchoolManagement.ClientModule.StudentClient;
 using SchoolManagement.ClientModule.Validations;
-using SchoolManagement.DataModule.DataProviders;
-using SchoolManagement.ServiceModule.Services.StudentService;
 
 namespace SchoolManagement.ClientModule.GetInput;
 
@@ -22,7 +19,7 @@ public abstract class GetPersonInput
         while(!Surname.IsNameOrSurnameValid())
         {
             Console.WriteLine($"surname input must contain only alphabetic characters");
-            this.Surname = "Enter surname (again):".GetString();
+            this.Surname = "Enter surname (again): ".GetString();
         }
         
         this.IdentityNumber = "Enter identity number: ".GetLong();
@@ -30,7 +27,7 @@ public abstract class GetPersonInput
         {
             Console.WriteLine($"identity number value must be from 9999999999 to 99999999999");
             
-            this.IdentityNumber = "Enter identity number(again):".GetLong();
+            this.IdentityNumber = "Enter identity number(again): ".GetLong();
         }
     }
 
@@ -42,14 +39,15 @@ public class GetStudentInput : GetPersonInput
     public override void GetAllInputs()
     {
         base.GetAllInputs();
-        this.StudentNumber = "Enter student school number:".GetInt();
+        this.StudentNumber = "Enter student school number: ".GetInt();
     }
 }
 public class GetTeacherInput : GetPersonInput
 {
+    public string? Branch { get; set; }
     public override void GetAllInputs()
     {
         base.GetAllInputs();
-        string branch = "Enter branch of teacher:".GetString();
+        this.Branch = "Enter branch of teacher: ".GetString();
     }
 }

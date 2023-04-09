@@ -6,5 +6,7 @@ namespace SchoolManagement.ServiceModule.Services.StudentService;
 public interface IStudentService : IService<Student>, IPersonService<Student>
 {
     public Student GetStudentBySchoolNumber(int studentNumber);
-    public void AddCourseToStudent(int id, Course course);
+    // Spublic void AddCourseToStudent(int id, int courseId);
+    public void GiveHomeworkToStudent(int id, int homeworkId);
+
 }

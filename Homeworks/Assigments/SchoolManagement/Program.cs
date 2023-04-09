@@ -55,21 +55,36 @@ classdata.ReadData()?.ForEach(x =>
 });
  */
 
-using SchoolManagement.ClientModule;
+using SchoolManagement.ClientModule.ClassroomClient;
 using SchoolManagement.ClientModule.GetInput;
 using SchoolManagement.ClientModule.StudentClient;
+using SchoolManagement.ClientModule.TeacherClient;
 using SchoolManagement.DataModule.DataProviders;
+using SchoolManagement.ServiceModule.Services.ClassroomService;
+using SchoolManagement.ServiceModule.Services.HomeworkService;
 using SchoolManagement.ServiceModule.Services.StudentService;
+using SchoolManagement.ServiceModule.Services.TeacherService;
+
 GetStudentInput studentInput = new GetStudentInput();
-IStudentDataProvider dataProvider = new StudentDataProvider(); 
-IStudentService service = new StudentService(dataProvider);
-StudentClient studentClient = new StudentClient(service); 
+IClassroomDataProvider classroomDataProvider = new ClassroomDataProvider(); 
+IStudentDataProvider studentDataProvider = new StudentDataProvider(); 
+IHomeworkDataProvider homeworkDataProvider = new HomeworkDataProvider();
+ITeacherDataProvider teacherDataProvider = new TeacherDataProvider();
+IHomeworkService homeworkService = new HomeworkService(homeworkDataProvider);
+IStudentService studentService = new StudentService(studentDataProvider, homeworkService);
+ITeacherService teacherService = new TeacherService(teacherDataProvider);
+IClassroomService classroomService = new ClassroomService(classroomDataProvider, studentService, teacherService);
+StudentClient studentClient = new StudentClient(studentService); 
+GetClassroomInput classroomInput = new GetClassroomInput();
+ClassroomClient classroomClient = new ClassroomClient(classroomService); 
+GetTeacherInput getTeacherInput = new GetTeacherInput(); 
+TeacherClient teacherClient = new TeacherClient(teacherService); 
 string choise = string.Empty;
 while(choise != "quit")
 {
     try
     {
-        choise = "Please write student operation that you want to make (to quit 'quit')\n".GetString().ToLower();
+        choise = "Please write operation that you want to make (to quit 'quit')\n".GetString().ToLower();
     }
     catch(Exception err)
     {
@@ -79,6 +94,12 @@ while(choise != "quit")
     {
         case "add student":
             StudentAdd();
+        break;
+        case "add classroom":
+            ClassroomAdd();
+        break;
+        case "add teacher":
+            AddTeacher();
         break;
         case "get all students data":
             StudentList();
@@ -92,11 +113,87 @@ while(choise != "quit")
         case "remove student by id":
             RemoveStudent();
         break;
+        case "add student in a class":
+            AddStudentToClassroom();
+        break;
+        case "add teacher in a class":
+            ClassroomTeacher();
+        break;
+        case "find student into a class":
+            FindStudentInClass();
+        break;
+        case "get all classes":
+            GetClassrooms();
+        break;
     }
 }
+void AddTeacher()
+{
+    getTeacherInput.GetAllInputs();
+    teacherClient.AddTeacher(getTeacherInput);
+}
+void ClassroomAdd()
+{
+    classroomInput.GetAllInputs();
+    classroomClient.AddClassroom(classroomInput);
+}
+void GetClassrooms()
+{
+    classroomClient.GetAllClassrooms().ForEach(e => e.SendClassroomToWrite());
+}
+void ClassroomTeacher()
+{
+    TeacherList();
+    GetClassrooms();
+    char name = "Enter name value of classroom that you want to add teacher: ".GetChar();
+    int id = "Enter id value of teacher that you want to add: ".GetInt();
+    try
+    { 
+        classroomClient.AddTeacherToClassroom(id, name);
+    }
+    catch(Exception er)
+    {
+        Console.WriteLine(er.Message);
+    }
+}
+void AddStudentToClassroom()
+{
+    StudentList();
+    GetClassrooms();
+    char name = "Enter name value of classroom that you want to add student: ".GetChar();
+    int id = "Enter id value of student that you want to add: ".GetInt();
+    try
+    { 
+        classroomClient.AddStudentToClassroom(name, id);
+    }
+    catch(Exception er)
+    {
+        Console.WriteLine(er.Message);
+    }
+}
+void FindStudentInClass()
+{
+    StudentList();
+    GetClassrooms();
+    char name = "Enter name value of classroom that you want to search student: ".GetChar();
+    int id = "Enter id value of student that you want to find: ".GetInt();
+    try
+    { 
+        classroomClient.FindStudentInClassroom(id, name).SendStudentToWrite();
+    }
+    catch(Exception er)
+    {
+        Console.WriteLine(er.Message);
+    }
 
+}
+void TeacherList()
+{
+    teacherClient.GetAllTeachers().ForEach(e => Console.WriteLine($"id: {e.Id} {e.Name}"));
+}
 void GetStudentById()
 {
+    StudentList();
     int id = "Enter id value of student that you want to see: ".GetInt();
 
     try
@@ -109,8 +206,6 @@ void GetStudentById()
     }
 }
 void StudentAdd(){
-    
-
     try
     { 
         studentInput.GetAllInputs();
@@ -127,7 +222,7 @@ void StudentList()
 {   
     try
     { 
-        studentClient.GetAllStudents();
+        studentClient.GetAllStudents().ForEach(e => e.SendStudentToWrite());
     }
     catch(Exception er)
     {
@@ -137,6 +232,7 @@ void StudentList()
 
 void UpdateStudent()
 {
+    StudentList();
     int id = "Enter id value of student that you want to update: ".GetInt();
     studentInput.GetAllInputs();
     try
@@ -151,8 +247,8 @@ void UpdateStudent()
 
 void RemoveStudent()
 {
+    StudentList();
     int id = "Enter id value of student that you want to remove: ".GetInt();
-    studentInput.GetAllInputs();
     try
     { 
         studentClient.RemoveStudent(id);

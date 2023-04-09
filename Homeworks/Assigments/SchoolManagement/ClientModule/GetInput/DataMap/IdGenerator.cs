@@ -1,4 +1,4 @@
-namespace SchoolManagement.ClientModule.GetInput;
+namespace SchoolManagement.ClientModule.GetInput.DataMap;
 
 
 public class IdGenerator

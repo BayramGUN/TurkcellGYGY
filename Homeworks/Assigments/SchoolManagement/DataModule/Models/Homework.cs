@@ -1,9 +1,8 @@
 namespace SchoolManagement.DataModule.Models;
 
-public class Course
+public class Homework
 {
     public int Id { get; set; }
-    public string? Name { get; set; }
-    public int? Grade { get; set; }
+    public string? Title { get; set; }
     public Teacher? Teacher { get; set; }
 }
