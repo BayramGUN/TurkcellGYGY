@@ -46,6 +46,13 @@ public class ClassroomService : IClassroomService
             throw new ArgumentNullException("No classroom found with this identity number!");
         return classroom;
     }
+    public Classroom GetByName(char name)
+    {
+        var classroom = _classroomProvider.ReadData()?.SingleOrDefault(e => e.Name == name);
+        if(classroom is null)
+            throw new ArgumentNullException("No classroom found with this identity number!");
+        return classroom;
+    }
 
     public void Romove(int id)
     {
@@ -73,6 +80,14 @@ public class ClassroomService : IClassroomService
         var studentInClass = classroom!.Students?.SingleOrDefault(e => e.Id == id);
         if(studentInClass is null)
             throw new ArgumentNullException($"there is no student with this {id} number!");
+        return studentInClass;
+    }
+    public List<Student> GetStudentsByName(char classroomName)
+    {
+        var classroom = _classroomProvider!.ReadData()?.FirstOrDefault(e => e.Name == classroomName);
+        var studentInClass = classroom!.Students;
+        if(studentInClass is null)
+            throw new ArgumentNullException($"there is no student in {classroomName}!");
         return studentInClass;
     }
 }

@@ -1,4 +1,4 @@
-/* using SchoolManagement.ClientModule.GetInput;
+using SchoolManagement.ClientModule.GetInput;
 using SchoolManagement.ClientModule.GetInput.DataMap;
 using SchoolManagement.DataModule.Models;
 using SchoolManagement.ServiceModule.Services.HomeworkService;
@@ -13,7 +13,7 @@ public class HomeworkClient
         _service = service;
     }
     
-    public List<Homework> GetAllHomework() => _service!.GetAll();
+    public List<Homework> GetAllHomeworks() => _service!.GetAll();
     public Homework GetHomeworkById(int id) => _service!.GetById(id); 
     
     public void RemoveHomework(int id) => _service!.Romove(id);
@@ -44,4 +44,3 @@ public class HomeworkClient
         }
     }
 }
- */

@@ -6,7 +6,7 @@ namespace SchoolManagement.ServiceModule.Services.HomeworkService;
 
 public class HomeworkService : IHomeworkService
 {
-    private readonly IDataProvider<Homework>? _homeworkProvider;
+    private readonly IDataProvider<Homework> _homeworkProvider;
     private readonly IDataProvider<Teacher> _teacherProvider = new TeacherDataProvider();
     private readonly IDataProvider<Student> _studentProvider = new StudentDataProvider();
     public HomeworkService(IHomeworkDataProvider homeworkDataProvider)
@@ -24,7 +24,7 @@ public class HomeworkService : IHomeworkService
         throw new NotImplementedException();
     }
 
-    public Homework GetById(int id) => _homeworkProvider!.ReadData()?.SingleOrDefault(e => e.Id == id);
+    public Homework GetById(int id) => _homeworkProvider!.ReadData()!.FirstOrDefault(e => e.Id == id);
 
     public void Romove(int id)
     {

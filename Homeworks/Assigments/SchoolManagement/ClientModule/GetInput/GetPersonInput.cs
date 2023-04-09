@@ -9,26 +9,12 @@ public abstract class GetPersonInput
     public long IdentityNumber;
     public virtual void GetAllInputs()
     {
-        this.Name = "Enter name: ".GetString();
-        while(!Name.IsNameOrSurnameValid())
-        {
-            Console.WriteLine($"name input must contain only alphabetic characters");
-            this.Name = "Enter name (again):".GetString();
-        }
-        this.Surname = "Enter surname: ".GetString();
-        while(!Surname.IsNameOrSurnameValid())
-        {
+        while(!"Enter name:".GetString().IsNameOrSurnameValid())
+            Console.WriteLine($"name input must contain only alphabetic characters!");
+        while(!"Enter surname: ".GetString().IsNameOrSurnameValid())
             Console.WriteLine($"surname input must contain only alphabetic characters");
-            this.Surname = "Enter surname (again): ".GetString();
-        }
-        
-        this.IdentityNumber = "Enter identity number: ".GetLong();
-        while(!IdentityNumber.IsIdentityNumberValid())
-        {
-            Console.WriteLine($"identity number value must be from 9999999999 to 99999999999");
-            
-            this.IdentityNumber = "Enter identity number(again): ".GetLong();
-        }
+        while(!"Enter identity number: ".GetLong().IsIdentityNumberValid())
+            Console.WriteLine($"identity number value must be from 9999999999 to 99999999999");  
     }
 
 }

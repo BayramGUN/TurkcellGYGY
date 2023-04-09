@@ -57,6 +57,7 @@ classdata.ReadData()?.ForEach(x =>
 
 using SchoolManagement.ClientModule.ClassroomClient;
 using SchoolManagement.ClientModule.GetInput;
+using SchoolManagement.ClientModule.HomeworkClient;
 using SchoolManagement.ClientModule.StudentClient;
 using SchoolManagement.ClientModule.TeacherClient;
 using SchoolManagement.DataModule.DataProviders;
@@ -76,6 +77,8 @@ ITeacherService teacherService = new TeacherService(teacherDataProvider);
 IClassroomService classroomService = new ClassroomService(classroomDataProvider, studentService, teacherService);
 StudentClient studentClient = new StudentClient(studentService); 
 GetClassroomInput classroomInput = new GetClassroomInput();
+GetHomeworkInput homeworkInput = new GetHomeworkInput();
+HomeworkClient homeworkClient = new HomeworkClient(homeworkService);
 ClassroomClient classroomClient = new ClassroomClient(classroomService); 
 GetTeacherInput getTeacherInput = new GetTeacherInput(); 
 TeacherClient teacherClient = new TeacherClient(teacherService); 
@@ -101,6 +104,12 @@ while(choise != "quit")
         case "add teacher":
             AddTeacher();
         break;
+        case "add homework":
+            AddHomework();
+        break;
+        case "give homework to student":
+            GiveHomework();
+        break;
         case "get all students data":
             StudentList();
         break;
@@ -122,11 +131,28 @@ while(choise != "quit")
         case "find student into a class":
             FindStudentInClass();
         break;
+        case "get all students from a classroom":
+            GetAllStundetsClassrooms();
+        break;
         case "get all classes":
             GetClassrooms();
         break;
     }
 }
+
+void GiveHomework()
+{
+    int id = "Enter id value of student who you want to give homework: ".GetInt();
+    int homeworkId = "Enter id value of homework that you want to give: ".GetInt();
+    studentClient.GiveHomework(id, homeworkId);
+}
+
+void AddHomework()
+{
+    homeworkInput.GetAllInputs();
+    homeworkClient.AddHomework(homeworkInput);
+}
+
 void AddTeacher()
 {
     getTeacherInput.GetAllInputs();
@@ -141,6 +167,11 @@ void GetClassrooms()
 {
     classroomClient.GetAllClassrooms().ForEach(e => e.SendClassroomToWrite());
 }
+void GetAllStundetsClassrooms()
+{
+    char name = "Enter name value of classroom that you want to add teacher: ".GetChar();
+    classroomClient.GetStudentsInClass(name);
+} 
 void ClassroomTeacher()
 {
     TeacherList();

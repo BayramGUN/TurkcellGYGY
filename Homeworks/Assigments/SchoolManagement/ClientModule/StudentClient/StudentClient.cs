@@ -56,4 +56,8 @@ public class StudentClient
             Console.WriteLine(er.Message);
         }
     }
+    public void GiveHomework(int id, int homeworkId)
+    {
+        _service!.GiveHomeworkToStudent(id, homeworkId);
+    }
 }

@@ -32,6 +32,10 @@ public class ClassroomClient
     
     public Student FindStudentInClassroom(int id, char name) => 
         _classroomService!.GetStudentInClassroom(id, name);
+    public List<Student> GetStudentsInClass(char name) => 
+        _classroomService!.GetStudentsByName(name);
+    public Classroom GetClassroomByName(char name) => 
+        _classroomService!.GetByName(name);
     public void AddTeacherToClassroom(int id, char name) =>
         _classroomService!.AssignTeacherToClassroom(name, id);
     /* public void UpdateStudent(int id, GetStudentInput updateStudentInput)
