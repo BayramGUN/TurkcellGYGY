@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Movies.Entities;
+using Movies.Data.Data;
 
 namespace Movies.Data.Repositories;
 
@@ -26,8 +27,7 @@ public class EFMovieRepository : IMovieRepository
     public async Task DeleteAsync(int id)
     {
         var movie = await moviesDbContext.Movies.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
-        if(movie is not null)
-            moviesDbContext.Movies.Remove(movie);
+        moviesDbContext.Movies.Remove(movie);
         await moviesDbContext.SaveChangesAsync();
     }
 

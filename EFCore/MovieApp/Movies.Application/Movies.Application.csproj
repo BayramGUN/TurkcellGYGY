@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-         <!-- <ProjectReference Include = "..\Movies.Entities\Movies.Entities.csproj" /> -->
+         <ProjectReference Include = "..\Movies.Entities\Movies.Entities.csproj" />
          <ProjectReference Include = "..\Movies.Data\Movies.Data.csproj" />
   </ItemGroup>
 </Project>
