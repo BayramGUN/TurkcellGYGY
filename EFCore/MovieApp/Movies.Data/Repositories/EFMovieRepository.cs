@@ -33,7 +33,11 @@ public class EFMovieRepository : IMovieRepository
 
     public async Task<ICollection<Movie>> GetAllAsync()
     {
-        return await moviesDbContext.Movies.AsNoTracking().ToListAsync();
+        return await moviesDbContext.Movies.AsNoTracking()
+                                           .Include(movie => movie.Director)
+                                           .Include(movie => movie.Players)
+                                           .ThenInclude(players=> players.Player)
+                                           .ToListAsync();
     }
 
     public async Task<Movie?> GetByIdAsync(int id)
@@ -53,6 +57,12 @@ public class EFMovieRepository : IMovieRepository
         // Task of the service. 
         /*var movie = await moviesDbContext.Movies.AsNoTracking().FirstOrDefaultAsync(m => m.Id == entity.Id);
         if (movie is not null) */ 
+        moviesDbContext.Movies.Update(entity);
+        await moviesDbContext.SaveChangesAsync();
+    }
+    public async Task UpdateAsync(MoviesPlayer entity)
+    {
+        
         moviesDbContext.Movies.Update(entity);
         await moviesDbContext.SaveChangesAsync();
     }

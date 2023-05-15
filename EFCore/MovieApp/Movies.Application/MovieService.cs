@@ -33,7 +33,13 @@ public class MovieService : IMovieService
             Name = movie.Name,
             Id = movie.Id,
             PublishDate = movie.PublishDate,
-            Rating = movie.Rating
+            Rating = movie.Rating,
+            DirectoryName = $"{movie.Director?.Name} {movie.Director?.LastName}",
+            Players = string.Join(",", 
+                            movie.Players.Select(moviePlayer => new
+                            {
+                                FullName = $"{moviePlayer.Player.Name} {moviePlayer.Player.LastName}"
+                            }))
         });
         return response;
     }
@@ -41,5 +47,10 @@ public class MovieService : IMovieService
     public Task UpdateMovie(UpdateMovieRequest updateMovie)
     {
         throw new NotImplementedException();
+    }
+    public async Task UpdateMoviesPlayer(UpdateMoviesPlayerRequest updateMoviesPlayerRequest, int movieId, int playerId)
+    {
+        var movie = movieRepository.GetByIdAsync(movieId);
+        await movieRepository.UpdateAsync(updateMoviesPlayerRequest);
     }
 }
