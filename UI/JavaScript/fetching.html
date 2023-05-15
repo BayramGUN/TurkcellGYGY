@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <button class="fetch" data-film="1" onclick="getSwapi()">FETCH-1</button>
+        <h3 id="title"></h3>
+        <p id="crawl"></p>
+        <h5 id="director"></h5>
+    </div>
+    <script>
+        async function getSwapi() {
+            let elements = document.getElementsByClassName('fetch');
+           
+            let response = await fetch('https://swapi.dev/api/films/' + film);
+            if(response.ok) {
+                let json = await response.json();
+                console.log(json);
+                showOnPage(json);
+            }
+
+        }
+        function showOnPage(film) {
+            console.log("log:" + film.title);
+            document.getElementById('title').innerText = film.title;
+            document.getElementById('crawl').innerText = film.opening_crawl;
+            document.getElementById('director').innerText = film.director;
+        } 
+    </script>
+</body>
+</html>

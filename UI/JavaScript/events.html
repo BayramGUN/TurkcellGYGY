@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<style>
+    div{
+        border: 1px solid black;
+        border-radius: 10px;
+        padding: 10px;
+        margin: 10px;
+    }
+</style>
+<body>
+    <div id="panel" onclick="clickon(event)">
+        <div id="section" onclick="clickon(event)">
+            <div id="container" onclick="clickon(event)">
+                <button id="addcartbtn" onclick="clickon(event)">Add Cart!</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="alt">Alternative event</button>
+
+
+    <script src="./events.js"></script>
+</body>
+</html>

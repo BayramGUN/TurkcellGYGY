@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        <span id="messageUsername"></span>
+        <input class="required" type="text" name="username" id="textUsername" data-message="Do not leave username field blank!" data-target="messageUsername" placeholder="username"> 
+        <span id="messagePassword"></span>
+        <input class="required" type="password" name="password" id="textPassword" placeholder="password" data-message="Forgot the password!" data-target="messagePassword"> 
+        <span id="messagenumber"></span>
+        <input class="required" type="number" name="age" id="textAge" placeholder="age" data-message="Do not leave age field blank!" data-target="messagenumber" > <br>
+        <select class="required"name="country" id="selectCountry" aria-placeholder="country" >
+            <option value="">Select country!</option>
+            <option value="tr">Türkiye</option>
+            <option value="fr">France</option>
+            <option value="it">Italy</option>
+        </select> <br>
+        <button type="submit" onclick="return validate()">Signup</button>
+    </form>
+
+    <script src="./validation.js"></script>
+</body>
+</html>
