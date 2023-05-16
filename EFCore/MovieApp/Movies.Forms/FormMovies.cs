@@ -39,11 +39,11 @@ namespace Movies.Forms
 
         private async Task fillPlayers()
         {
-            var players = await playerService.GetPlayerLists();
+            var players = await playerService.GetPlayers();
             var playerFullNames = players.Select(p => new
             {
                 Id = p.Id,
-                FullName = $"{p.Name} {p.LastName}"
+                FullName = $"{p.Name} {p.Lastname}"
             });
 
             listBoxPlayers.DataSource = playerFullNames.ToList();

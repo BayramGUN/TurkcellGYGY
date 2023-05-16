@@ -10,14 +10,21 @@ using System.Threading.Tasks;
 
 namespace Movies.Application
 {
-    public class PlayerService
+    public class PlayerService : IPlayerService
     {
         private readonly IPlayerRepository _playerRepository;
+
+        public PlayerService(IPlayerRepository playerRepository)
+        {
+            _playerRepository = playerRepository;
+        }
+
         public async Task<IEnumerable<PlayerListResponse>> GetPlayers()
         {
             var players = await _playerRepository.GetAllAsync();
             return players.Select(p => new PlayerListResponse
             {
+                Id = p.Id,
                 Name = p.Name,
                 Lastname = p.LastName,
                 Info = p.Info,

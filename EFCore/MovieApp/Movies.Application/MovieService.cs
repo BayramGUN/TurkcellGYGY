@@ -55,6 +55,6 @@ public class MovieService : IMovieService
             PlayerId = updateMoviesPlayerRequest.PlayerId,
             Role = updateMoviesPlayerRequest.Role
         };
-        await movieRepository.UpdateMoviesPlayerAsync(moviePlayer);
+        await movieRepository.UpdateMoviesPlayerAsync(moviePlayer, playerId);
     }
 }
