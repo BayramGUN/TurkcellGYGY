@@ -51,6 +51,10 @@ public class MovieService : IMovieService
     public async Task UpdateMoviesPlayer(UpdateMoviesPlayerRequest updateMoviesPlayerRequest, int movieId, int playerId)
     {
         var movie = movieRepository.GetByIdAsync(movieId);
-        await movieRepository.UpdateAsync(updateMoviesPlayerRequest);
+        var moviePlayer = new MoviesPlayer {
+            PlayerId = updateMoviesPlayerRequest.PlayerId,
+            Role = updateMoviesPlayerRequest.Role
+        };
+        await movieRepository.UpdateMoviesPlayerAsync(moviePlayer);
     }
 }

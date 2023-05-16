@@ -27,7 +27,7 @@ public class EFMovieRepository : IMovieRepository
     public async Task DeleteAsync(int id)
     {
         var movie = await moviesDbContext.Movies.AsNoTracking().FirstOrDefaultAsync(m => m.Id == id);
-        moviesDbContext.Movies.Remove(movie);
+        moviesDbContext.Movies.Remove(movie!);
         await moviesDbContext.SaveChangesAsync();
     }
 
@@ -60,10 +60,14 @@ public class EFMovieRepository : IMovieRepository
         moviesDbContext.Movies.Update(entity);
         await moviesDbContext.SaveChangesAsync();
     }
-    public async Task UpdateAsync(MoviesPlayer entity)
+    public async Task UpdateMoviesPlayerAsync(MoviesPlayer entity, int playerId)
     {
         
-        moviesDbContext.Movies.Update(entity);
-        await moviesDbContext.SaveChangesAsync();
+        var movie = await moviesDbContext.Movies.FindAsync(entity.MovieId);
+        var moviePlayer = movie!.Players.FirstOrDefault(pl => pl.PlayerId == playerId);
+        moviePlayer!.PlayerId = entity.PlayerId;
+        moviesDbContext.Movies.Update(movie);
+        await moviesDbContext.SaveChangesAsync();       
+
     }
 }
