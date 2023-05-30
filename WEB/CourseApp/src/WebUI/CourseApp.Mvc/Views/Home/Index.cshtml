@@ -1,23 +1,62 @@
-﻿@model IEnumerable<CourseDisplayResponse>
-
+﻿@model PaginationCourseViewModel
 @{
     ViewData["Title"] = "Home Page";
+    var columnCount = 0;
 }
 
-<div class="row">
-    @foreach(var courseDisplay in Model)
+<div class="row m-3">
+    @foreach(var courseDisplay in Model.Courses)
     {
+        @if(columnCount != 0 & columnCount % 4 == 0)
+        {
+            @:</div><div class="row m-3">
+        }
         <div class="col-3">
-            <div class="card"> 
-                <h4 class="card-title">
-                    @courseDisplay.Title
-                </h4>
-                <img  src="@courseDisplay.ImageUrl" class="img-fluid">
-                <p class="card-text"><b>@courseDisplay.Name</b></p> <br>
-                <p class="card-text">@courseDisplay.Description</p>
-                <p class="card-text"><b>@courseDisplay.Price TL</b></p>
-
-            </div>
+            <partial name="_CourseDisplay" model="courseDisplay" />
         </div>
+
+        columnCount++;
     }
 </div>
+@* 
+<div>
+    <ul class="pagination pagination-lg">
+        @for (int i = 1; i <= ViewBag.TotalPage; i++)
+        {
+            <li class="page-item @(i == ViewBag.PageNo ? "active" : "" )"><a asp-action="Index" asp-route-pageNo="@i" class="page-link">@i</a></li>
+        }
+    </ul>
+</div> *@
+<div page-model="Model.PagingInfo" page-action="Index"></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">      
+      <strong class="me-auto">Sepet Bilgisi</strong>  
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">  
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('.basket').on('click', function() {
+                let id = $(this).data('id');
+                $.ajax({
+                    url:'/Shopping/AddCourse/' + id,
+                    type: 'GET',
+                    success: function(data) {
+                        console.table(data);
+                    },
+                    error: function(err) {
+                        console.log('error: ', err)
+                        alert(err.status + ' not found');
+                    }
+                });
+            });
+        });
+    </script>
+} 

@@ -15,6 +15,10 @@ namespace CourseApp.Services.Extensions
         {
             return mapper.Map<T>(value);
         }
+        public static T ConvertToDto<T>(this IEnumerable<Category> value, IMapper mapper)
+        {
+            return mapper.Map<T>(value);
+        }
         public static Tout ConverTo<Tin, Tout>(this Tin value, IMapper mapper)
         {
             return mapper.Map<Tout>(value);

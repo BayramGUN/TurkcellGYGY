@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
 using CourseApp.DTOs.Responses;
 using CourseApp.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CourseApp.Services.Mappings
 {
@@ -14,6 +10,7 @@ namespace CourseApp.Services.Mappings
         public MapProfile()
         {
             CreateMap<Course, CourseDisplayResponse>();
+            CreateMap<Category, CategoryDisplayResponse>();
         }
     }
 }

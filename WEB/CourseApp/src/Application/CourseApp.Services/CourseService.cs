@@ -22,6 +22,12 @@ namespace CourseApp.Services
             _mapper = mapper;
         }
 
+        public CourseDisplayResponse GetCourseDisplayResponse(int id)
+        {
+            var course = _courseRepository.Get(id);
+            return _mapper.Map<CourseDisplayResponse>(course);
+        }
+
         public IEnumerable<CourseDisplayResponse> GetCourseDisplayResponses()
         {
             var courses = _courseRepository.GetAll();
@@ -29,6 +35,12 @@ namespace CourseApp.Services
             // var responsesAlternate = courses!.ConverToDisplayResponses(_mapper);
            // var responsesAlternateTwo = courses!.ConverTo<Course, CourseDisplayResponse>(_mapper);
             return responses;
+        }
+
+        public IEnumerable<CourseDisplayResponse> GetCoursesByCategory(int categoryId)
+        {
+            var courses = _courseRepository.GetCoursesByCategory(categoryId);
+            return courses.ConvertToDto<IEnumerable<CourseDisplayResponse>>(_mapper);
         }
     }
 }

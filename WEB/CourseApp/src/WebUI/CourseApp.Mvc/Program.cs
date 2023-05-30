@@ -1,8 +1,6 @@
-using AutoMapper;
 using CourseApp.Infrastructure.Repositories;
 using CourseApp.Services;
 using CourseApp.Services.Mappings;
-using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ICourseRepository, FakeCourseRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<ICategoryRepository, FakeCategoryRepository>();
+
+// IoC
 builder.Services.AddAutoMapper(typeof(MapProfile));
 
+
+builder.Services.AddSession(opt =>
+{
+    opt.IdleTimeout = TimeSpan.FromMinutes(15);
+}); 
 
 var app = builder.Build();
 
@@ -24,7 +31,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
+
+app.UseSession();
 
 app.UseRouting();
 
@@ -32,6 +42,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+);
 
 app.Run();

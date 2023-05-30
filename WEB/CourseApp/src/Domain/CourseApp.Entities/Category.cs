@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CourseApp.Entities
+namespace CourseApp.Entities;
+public class Category : IEntity
 {
-    public class Category : IEntity
-    {
-    }
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public IEnumerable<Course>? Courses { get; set; }
+    
 }
+

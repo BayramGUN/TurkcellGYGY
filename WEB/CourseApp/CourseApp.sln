@@ -7,21 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8DE46FDB-56A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebUI", "WebUI", "{CD208640-9E40-4F86-B10F-2506AC909E97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Mvc", "src\WebUI\CourseApp.Mvc\CourseApp.Mvc.csproj", "{60747659-DA26-48FB-B667-1A34E6CF75F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseApp.Mvc", "src\WebUI\CourseApp.Mvc\CourseApp.Mvc.csproj", "{60747659-DA26-48FB-B667-1A34E6CF75F1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{E1858208-3B92-4DF4-B7C0-9FC1EE621F5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Entities", "src\Domain\CourseApp.Entities\CourseApp.Entities.csproj", "{6096C867-E376-4BEE-A91F-9FF1E55EC0CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseApp.Entities", "src\Domain\CourseApp.Entities\CourseApp.Entities.csproj", "{6096C867-E376-4BEE-A91F-9FF1E55EC0CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{FD6E11E4-08C6-44EA-A5D2-BA3B1FE4B9A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Services", "src\Application\CourseApp.Services\CourseApp.Services.csproj", "{5FF0D9E2-057F-4091-9C14-825565FC0C4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseApp.Services", "src\Application\CourseApp.Services\CourseApp.Services.csproj", "{5FF0D9E2-057F-4091-9C14-825565FC0C4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.DTOs", "src\Application\CourseApp.DTOs\CourseApp.DTOs.csproj", "{A584FFC2-63B4-4383-98A5-ACB76FABFC89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseApp.DTOs", "src\Application\CourseApp.DTOs\CourseApp.DTOs.csproj", "{A584FFC2-63B4-4383-98A5-ACB76FABFC89}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrasucture", "Infrasucture", "{961220A5-CD5F-49BA-A83D-2AA9EF864C5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CourseApp.Infrastructure", "src\Infrastructure\CourseApp.Infrastructure\CourseApp.Infrastructure.csproj", "{57EF35A4-93AB-4C6F-B2D0-E402FD704767}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CourseApp.Infrastructure", "src\Infrastructure\CourseApp.Infrastructure\CourseApp.Infrastructure.csproj", "{57EF35A4-93AB-4C6F-B2D0-E402FD704767}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
