@@ -63,11 +63,23 @@ public class EFMovieRepository : IMovieRepository
     public async Task UpdateMoviesPlayerAsync(MoviesPlayer entity, int playerId)
     {
         
-        var movie = await moviesDbContext.Movies.FindAsync(entity.MovieId);
-        var moviePlayer = movie!.Players.FirstOrDefault(pl => pl.PlayerId == playerId);
-        moviePlayer!.PlayerId = entity.PlayerId;
-        moviesDbContext.Movies.Update(movie);
-        await moviesDbContext.SaveChangesAsync();       
+        	    var movies = await moviesDbContext.Movies.AsNoTracking()
+                                                    .Include(m => m.Players)
+                                                    .ThenInclude(p => p.Player)
+                                                    .ToListAsync();
+            var movie = movies.FirstOrDefault(m => m.Id == entity.MovieId);
+            var moviesPlayer = movie.Players.FirstOrDefault(mp => mp.PlayerId == playerId);
+
+            if(movie is not null & moviesPlayer is not null)
+            {
+                movie.Players.Remove(moviesPlayer);
+                movie.Players.Add(entity);          
+                /* movie.Players.Add(new MoviesPlayer {
+                    PlayerId = entity.PlayerId
+                }); */ 
+            }
+            moviesDbContext.Movies.Update(movie);
+            await moviesDbContext.SaveChangesAsync();      
 
     }
 }
