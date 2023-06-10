@@ -1,40 +1,47 @@
+using AutoMapper;
 using BookmateApp.DTOs.Requests;
 using BookmateApp.DTOs.Responses;
+using BookmateApp.Infrastructure.Repositories.RepositoryInterFaces;
+using BookmateApp.Services.Mappings.Extensions;
 using BookmateApp.Services.ServiceInterfaces;
 
 namespace BookmateApp.Services.ServiceImplementations;
 
 public class LibraryService : ILibraryService
 {
-    private readonly ILibraryService _libraryService;
+    private readonly ILibraryRepository _libraryRepository;
+    private readonly IMapper _mapper;
 
-    public LibraryService(ILibraryService libraryService)
+    public LibraryService(ILibraryRepository libraryRepository, IMapper mapper)
     {
-        _libraryService = libraryService;
+        _libraryRepository = libraryRepository;
+        _mapper = mapper;
     }
 
-    public Task CreateLibraryAsync(CreateLibraryRequest createLibraryRequest)
+    public async Task CreateLibraryAsync(CreateLibraryRequest createLibraryRequest)
     {
-        throw new NotImplementedException();
+        var request = createLibraryRequest.ConvertFromCreateLibraryRequest(_mapper);
+        await _libraryRepository.CreateAsync(request);
     }
 
-    public Task DeleteLibraryAsync(Guid libraryId)
+    public async Task DeleteLibraryAsync(Guid libraryId) => 
+        await _libraryRepository.DeleteAsync(libraryId);
+
+    public async Task<IList<LibraryDisplayResponse>> GetAllLibrariesAsync()
     {
-        throw new NotImplementedException();
+        var responses = await _libraryRepository.GetAllAsync();
+        return responses.ConvertToLibraryDisplayResponses(_mapper);
     }
 
-    public Task<IList<LibraryDisplayResponse>> GetAllLibrariesAsync()
+    public async Task<LibraryDisplayResponse> GetLibraryByIdAsync(Guid libraryId)
     {
-        throw new NotImplementedException();
+        var response = await _libraryRepository.GetAsync(libraryId);
+        return response!.ConvertToLibraryDisplayResponse(_mapper);
     }
 
-    public Task<LibraryDisplayResponse> GetLibraryByIdAsync(Guid libraryId)
+    public async Task UpdateLibraryAsync(UpdateLibraryRequest updateLibraryRequest)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task UpdateLibraryAsync(UpdateLibraryRequest updateLibraryRequest)
-    {
-        throw new NotImplementedException();
+        var updateLibrary = updateLibraryRequest.ConvertFromUpdateLibraryRequest(_mapper);
+        await _libraryRepository.UpdateAsync(updateLibrary);
     }
 }

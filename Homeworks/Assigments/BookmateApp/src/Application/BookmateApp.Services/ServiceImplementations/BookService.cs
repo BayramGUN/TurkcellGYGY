@@ -65,20 +65,7 @@ public class BookService : IBookService
 
     public async Task UpdateBookAsync(UpdateBookRequest updateBookRequest)
     {
-        try
-        {
-
-            var updateBook = updateBookRequest.ToEntity<UpdateBookRequest, Book>(_mapper);
-            await _bookRepository.UpdateAsync(updateBook);
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-        finally
-        {
-            var updateBook = updateBookRequest.ConvertFromUpdateBookRequest(_mapper);
-            await _bookRepository.UpdateAsync(updateBook);
-        }
+        var updateBook = updateBookRequest.ConvertFromUpdateBookRequest(_mapper);
+        await _bookRepository.UpdateAsync(updateBook);
     }
 }

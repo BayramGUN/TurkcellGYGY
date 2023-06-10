@@ -7,10 +7,10 @@ namespace BookmateApp.Services.Mappings.Extensions;
 
 public static class BookMappingExtensions
 {
-    /* public static TDestination ToEntity<TSource, TDestination>(this TSource source, IMapper mapper)
+    public static TDestination ToEntity<TSource, TDestination>(this TSource source, IMapper mapper)
     {
         return mapper.Map<TDestination>(source);
-    } */
+    }
 
     public static BookDisplayResponse ConvertToBookDisplayResponse(this Book book, IMapper mapper) => 
         mapper.Map<BookDisplayResponse>(book);

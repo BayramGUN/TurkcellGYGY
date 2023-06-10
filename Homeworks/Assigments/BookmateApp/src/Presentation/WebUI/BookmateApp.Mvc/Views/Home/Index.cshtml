@@ -52,7 +52,7 @@
                         const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
                         toastBootstrap.show();
                          
-                        location = location;
+                        //location = location;
                     },
                     error: function(err) {
                         console.log('error: ', err)
@@ -61,31 +61,7 @@
                 });
             });
         });
-        @* document.addEventListener('DOMContentLoaded', function() {
-            const libraryElements = document.querySelectorAll('.library');
+        
 
-            libraryElements.forEach(function(element) {
-                element.addEventListener('click', function() {
-                    let bookId = element.dataset.bookId;
-                    console.log(bookId);
-                    let urlString = '/Library/AddBook/' + bookId;
-
-                    fetch(urlString)
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error(response.status);
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.table(data);
-                        })
-                        .catch(error => {
-                            console.log('hata: ', error);
-                            alert(urlString + ' bulunamadı');
-                        });
-                });
-            });
-        }); *@
     </script>
 } 

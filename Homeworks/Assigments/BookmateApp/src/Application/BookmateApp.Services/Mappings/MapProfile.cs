@@ -11,15 +11,7 @@ public class MapProfile : Profile
     public MapProfile()
     {
         // For Queries
-        // Author
-        CreateMap<Author, AuthorDisplayResponse>()
-            .ForMember(
-                dest => dest.FullName,
-                opt => opt.MapFrom(src => $"{src.Firstname} {src.Lastname}"))
-            .ForMember(
-                dest => dest.Books, 
-                opt => opt.MapFrom(src => src.Books!.Select(books => books.Title))
-            );  
+        
         // Book
         CreateMap<Book, BookDisplayResponse>()
             .ForMember(
@@ -30,6 +22,15 @@ public class MapProfile : Profile
                 opt => opt.MapFrom(src => $"{src.Genre!.Name}")
             )
             .ReverseMap();
+        // Author
+        CreateMap<Author, AuthorDisplayResponse>()
+            .ForMember(
+                dest => dest.FullName,
+                opt => opt.MapFrom(src => $"{src.Firstname} {src.Lastname}"))
+            .ForMember(
+                dest => dest.Books, 
+                opt => opt.MapFrom(src => src.Books!.Select(books => books.Title))
+            ).ReverseMap();  
         // Genre
         CreateMap<Genre, GenreDisplayResponse>();
 
@@ -42,7 +43,7 @@ public class MapProfile : Profile
 
         // For Commands
         // Author
-        CreateMap<UpdateAuthorRequest, Author>();
+        CreateMap<UpdateAuthorRequest, Author>().ReverseMap();
         CreateMap<CreateAuthorRequest, Author>();
 
         // Book

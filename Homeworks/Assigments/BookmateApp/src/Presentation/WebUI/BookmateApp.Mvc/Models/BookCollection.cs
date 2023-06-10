@@ -11,14 +11,22 @@ public class BookCollection
 
     public void AddBook(BookListItem bookListItem)
     {
-        var exists = BookListItems.FirstOrDefault(b => b.Book.Id == bookListItem.Book.Id);
-        if(exists is not null)
+        
+        if(isExist(bookListItem))
             bookListItem.IsAdded = true;
         else
-        {
             BookListItems.Add(bookListItem);
-        }
+        
     }
+    public void RemoveBook(BookListItem bookListItem)
+    {
+        
+            BookListItems.Remove(bookListItem);
+            bookListItem.IsAdded = false;
+        
+    }
+    private bool isExist(BookListItem bookListItem) =>
+        BookListItems.FirstOrDefault(b => b.Book.Id == bookListItem.Book.Id) is not null;
 }
 public class BookListItem
 { 

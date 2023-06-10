@@ -33,6 +33,7 @@ else
                     <td>@bookListItem.Book.PublishDate.Year</td>
                     <td>@bookListItem.Book.Rate</td>
                     <td>@bookListItem.Book.Genre</td>
+                    <td><a asp-controller="Library" asp-action="RemoveBook" asp-route-id="@bookListItem.Book.Id">remove</a></td>
                 </tr>
             }
         </tbody>

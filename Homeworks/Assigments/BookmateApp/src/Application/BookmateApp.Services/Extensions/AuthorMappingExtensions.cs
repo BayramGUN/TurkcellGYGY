@@ -17,4 +17,6 @@ public static class AuthorMappingExtensions
         mapper.Map<Author>(authorRequest);
     public static Author ConvertFromUpdateAuthorRequest(this UpdateAuthorRequest updateAuthorRequest, IMapper mapper) => 
         mapper.Map<Author>(updateAuthorRequest);
+    public static UpdateAuthorRequest ConvertToUpdateAuthorRequest(this Author author, IMapper mapper) => 
+        mapper.Map<UpdateAuthorRequest>(author);
 }

@@ -9,6 +9,7 @@ public static class SessionExtensions
         var serialized = JsonSerializer.Serialize<T>(value);
         session.SetString(key, serialized);
     }
+    
     public static T? GetJson<T>(this ISession session, string key)
     {
         var serializedString = session.GetString(key);

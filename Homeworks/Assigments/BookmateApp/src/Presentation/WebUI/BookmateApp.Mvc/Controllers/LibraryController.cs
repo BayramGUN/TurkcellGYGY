@@ -19,7 +19,7 @@ public class LibraryController : Controller
 
     public IActionResult Index()
     {
-        var bookCollection =  getBookCollectionFromSession();
+        var bookCollection = getBookCollectionFromSession();
         return View(bookCollection);
     }
 
@@ -35,6 +35,17 @@ public class LibraryController : Controller
         saveToSession(bookCollection);
         return Json(new { message = $"{selectedBook.Title} kütüphaneye eklendi"});
     }
+    public async Task<IActionResult> RemoveBook(Guid bookId)
+    {
+        Debug.WriteLine(bookId);
+        BookDisplayResponse selectedBook = await _bookService.GetBookByIdAsync(bookId);
+        var bookListItem = new BookListItem {
+            Book = selectedBook
+        };
+        BookCollection bookCollection = getBookCollectionFromSession();
+        bookCollection.RemoveBook(bookListItem);
+        return View("Index");
+    }
 
     private BookCollection getBookCollectionFromSession()
     {
@@ -44,5 +55,6 @@ public class LibraryController : Controller
     {
         HttpContext.Session.SetJson(librarySesion, bookCollection);
     }
+   
 
 }

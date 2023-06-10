@@ -41,11 +41,18 @@ namespace BookmateApp.Mvc.Controllers
                 Genre = res.Genre,
                 PublishDate = res.PublishDate
             }).ToList();   */
+        public async Task<IActionResult> BookDetails(Guid id)
+        {  
+
+            var book = await _bookService.GetBookByIdAsync(id);
+
+            return View(book);
+        }
         public IActionResult Privacy()
         {
             return View();
         }
-
+        
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

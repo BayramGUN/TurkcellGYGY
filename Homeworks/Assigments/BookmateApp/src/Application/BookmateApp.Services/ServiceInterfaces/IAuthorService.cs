@@ -9,6 +9,7 @@ public interface IAuthorService
     //Task<Guid> CreateAuthorIdReturner(CreateAuthorRequest createAuthorRequest);
 
     Task<AuthorDisplayResponse> GetAuthorByIdAsync(Guid id);
+    Task<UpdateAuthorRequest> GetAuthorForUpdateAsync(Guid id);
     Task<IList<AuthorDisplayResponse>> GetAllAuthorsAsync();
 
     Task<IList<AuthorDisplayResponse>> SearchAuthorsByNameAsync(string name);

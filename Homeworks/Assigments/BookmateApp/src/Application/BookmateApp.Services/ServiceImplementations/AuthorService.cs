@@ -43,6 +43,12 @@ public class AuthorService : IAuthorService
         return author.ConvertToAuthorDisplayResponse(_mapper);
     }
 
+    public async Task<UpdateAuthorRequest> GetAuthorForUpdateAsync(Guid id)
+    {
+        var author = await _authorRepository.GetAsync(id);
+        return author.ConvertToUpdateAuthorRequest(_mapper);
+    }
+
     public async Task<bool> IsAuthorExist(Guid id) => 
         await _authorRepository.IsExistAsync(id);
     
@@ -55,20 +61,11 @@ public class AuthorService : IAuthorService
 
     public async Task UpdateAuthorAsync(UpdateAuthorRequest updateAuthorRequest)
     {
-        try
-        {
-
-            var updateAuthor = updateAuthorRequest.ToEntity<UpdateAuthorRequest, Author>(_mapper);
-            await _authorRepository.UpdateAsync(updateAuthor);
-        }
-        catch(Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-        finally
-        {
-            var updateAuthor = updateAuthorRequest.ConvertFromUpdateAuthorRequest(_mapper);
-            await _authorRepository.UpdateAsync(updateAuthor);
-        }
+    
+    
+    
+        var updateAuthor = updateAuthorRequest.ConvertFromUpdateAuthorRequest(_mapper);
+        await _authorRepository.UpdateAsync(updateAuthor);
+    
     }
 }

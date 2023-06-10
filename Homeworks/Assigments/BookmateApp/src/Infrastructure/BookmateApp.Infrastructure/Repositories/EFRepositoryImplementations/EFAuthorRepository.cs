@@ -34,14 +34,19 @@ public class EFAuthorRepository : IAuthorRepository
                                .Include(a => a.Books)
                                .ToListAsync(); 
 
-    public async Task<Author?> GetAsync(Guid id) =>
-        await _context.Authors!.FirstOrDefaultAsync(entity => entity.Id == id);
+    public async Task<Author?> GetAsync(Guid id)
+    {
+        var author = await _context.Authors!.FirstOrDefaultAsync(entity => entity.Id == id);
+        _context.Entry(author).State = EntityState.Detached;
+        return author;
+
+    }
 
     public async Task<IList<Author>> GetAuthorsByNameAsync(string name) =>
         await _context.Authors!.AsNoTracking().Where(a => a.Firstname.Contains(name)).ToListAsync();
         
     public async Task<bool> IsExistAsync(Guid id) =>
-        await _context.Authors!.SingleOrDefaultAsync(entity => entity.Id == id) is not null;
+        await _context.Authors!.FirstOrDefaultAsync(entity => entity.Id == id) is not null;
         
     public async Task UpdateAsync(Author entity)
     {
