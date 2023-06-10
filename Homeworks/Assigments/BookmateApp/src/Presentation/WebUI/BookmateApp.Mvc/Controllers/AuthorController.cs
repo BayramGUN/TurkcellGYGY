@@ -27,12 +27,28 @@ namespace BookmateApp.Mvc.Controllers
             var authorForUpdate = await _authorService.GetAuthorForUpdateAsync(id);
             return View(authorForUpdate);
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Guid id, UpdateAuthorRequest updateAuthorRequest)
+        {
+            if(await _authorService.IsAuthorExist(id))
+            {
+                if(ModelState.IsValid)
+                {
+                    await _authorService.UpdateAuthorAsync(updateAuthorRequest);
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
+            }
+            return NotFound();
+        }
+
+
         public IActionResult CreateAuthor()
         {
             return View();
         }
         
-
         [HttpPost]
         public async Task<IActionResult> CreateAuthor(CreateAuthorRequest createAuthorRequest)
         {
