@@ -1,0 +1,46 @@
+@model BookCollection
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Geçici Kitap Listeniz</h1>
+
+@if(Model.BookListItems.Count == 0)
+{
+    <div class="alert alert-danger">
+        Geçici kitap listenize henüz kitap eklemesi yapmadınız!
+    </div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Kitap Adı</th>
+                <th>Yazarı</th>
+                <th>Yayım Tarihi</th>
+                <th>Rate</th>
+                <th>Türü</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bookListItem in Model.BookListItems)
+            {
+                <tr>
+                    <td>@bookListItem.Book.Title</td>
+                    <td>@bookListItem.Book.AuthorName</td>
+                    <td>@bookListItem.Book.PublishDate.Year</td>
+                    <td>@bookListItem.Book.Rate</td>
+                    <td>@bookListItem.Book.Genre</td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4">Listenizdeki kitapların ortalama oy oranı: @Model.AvarageBookRates().ToString()</td>
+            </tr>
+        </tfoot>
+    </table>
+    <button type="button" class="btn btn-primary">Kütüphane Oluştur</button>
+}
