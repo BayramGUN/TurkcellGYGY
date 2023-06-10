@@ -11,6 +11,8 @@ public class BookmateAppDbContext : DbContext
     public DbSet<Library>? Libraries { get; set; }
     public DbSet<BooksLibrary>? BooksLibraries { get; set; }
 
+    public DbSet<User>? Users { get; set; }
+
     public BookmateAppDbContext(DbContextOptions<BookmateAppDbContext> options) : base(options)
     {
     }
@@ -25,6 +27,9 @@ public class BookmateAppDbContext : DbContext
                     .HasOne(book => book.Library)
                     .WithMany(bookLibrary => bookLibrary.BooksLibrary)
                     .HasForeignKey(libraryId => libraryId.LibraryId);
+
+        modelBuilder.Entity<User>().HasIndex(u => u.Username).IsUnique();
+
     }
 
 }

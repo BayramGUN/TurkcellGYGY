@@ -2,6 +2,7 @@ using BookmateApp.Infrastructure;
 using BookmateApp.Infrastructure.Data;
 using BookmateApp.Mvc.Extensions;
 using BookmateApp.Services.Mappings;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,6 +23,20 @@ builder.Services.AddSession(options =>
 });
 builder.Services.AddInjections(connectionString);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(option =>
+                {
+                    option.LoginPath = "/Users/Login";
+                    option.AccessDeniedPath = "/Users/AccesDenied";
+                    option.ReturnUrlParameter = "/pageToGo";
+
+                });
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -43,6 +58,7 @@ app.UseStaticFiles();
 app.UseSession();
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(

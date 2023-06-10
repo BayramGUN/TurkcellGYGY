@@ -1,4 +1,5 @@
 using BookmateApp.Entities;
+using System.Reflection.Metadata;
 
 namespace BookmateApp.Infrastructure.Data;
 
@@ -9,6 +10,40 @@ public static class DbSeedOperations
         seedGenreIfNotExist(dbContext);
         seedAuthorIfNotExist(dbContext);
         seedBookIfNotExist(dbContext);
+        seedUserIFNotExist(dbContext);
+    }
+
+    private static void seedUserIFNotExist(BookmateAppDbContext dbContext)
+    {
+        if(!dbContext.Users!.Any())
+        {
+            var users = new List<User> {
+                new()
+                {
+                    Id = new Guid("b59286b9-9915-4dc0-af94-a016327fed4c"),
+                    Username = "defaultUser",
+                    Password = "password",
+                    Role = "User",
+                    Email = "useremail@example.com",
+                },
+                new()
+                {
+                    Id = new Guid("e49d5f2b-d4f5-4724-967b-a8c2ebd81816"),
+                    Username = "admin",
+                    Password = "admin",
+                    Role = "admin",
+                    Email = "adminemail@example.com",
+                },
+                new()
+                {
+                    Id = new Guid("59e831d7-d9f3-4576-8198-fdba45159da7"),
+                    Username = "bayramme",
+                    Password = "günne",
+                    Role = "logger",
+                    Email = "loggeremail@example.com",
+                }
+            };
+        }
     }
 
     private static void seedGenreIfNotExist(BookmateAppDbContext dbContext)

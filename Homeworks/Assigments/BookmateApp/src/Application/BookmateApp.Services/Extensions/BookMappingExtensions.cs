@@ -20,4 +20,7 @@ public static class BookMappingExtensions
         mapper.Map<Book>(bookRequest);
     public static Book ConvertFromUpdateBookRequest(this UpdateBookRequest updateBookRequest, IMapper mapper) => 
         mapper.Map<Book>(updateBookRequest);
+
+    public static UpdateBookRequest ConvertToUpdateBookRequest(this Book book, IMapper mapper) => 
+        mapper.Map<UpdateBookRequest>(book);
 }

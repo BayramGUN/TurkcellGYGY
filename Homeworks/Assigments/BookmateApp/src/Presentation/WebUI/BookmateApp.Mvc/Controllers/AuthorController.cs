@@ -27,6 +27,8 @@ namespace BookmateApp.Mvc.Controllers
             var authorForUpdate = await _authorService.GetAuthorForUpdateAsync(id);
             return View(authorForUpdate);
         }
+        
+        
 
         [HttpPost]
         public async Task<IActionResult> Edit(Guid id, UpdateAuthorRequest updateAuthorRequest)
@@ -58,6 +60,16 @@ namespace BookmateApp.Mvc.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+        }
+
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            if (await _authorService.IsAuthorExist(id))
+            {
+                await _authorService.DeleteAuthorAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(nameof(Index));
         }
     }
 }

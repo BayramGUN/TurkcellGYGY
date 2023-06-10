@@ -1,6 +1,7 @@
 using BookmateApp.Infrastructure.Data;
 using BookmateApp.Infrastructure.Repositories.EFRepositoryImplementations;
 using BookmateApp.Infrastructure.Repositories.RepositoryInterFaces;
+using BookmateApp.Infrastructure.Repositories.RepsitoryInterfaces;
 using BookmateApp.Services.ServiceImplementations;
 using BookmateApp.Services.ServiceInterfaces;
 using Microsoft.EntityFrameworkCore;
@@ -18,8 +19,9 @@ public static class IoCExtensions
         services.AddScoped<IGenreRepository, EFGenreRepository>();
         services.AddScoped<IGenreService, GenreService>();
         services.AddScoped<ILibraryRepository, EFLibraryRepository>();
-        services.AddScoped<ILibraryService, LibraryService>();
-        
+        services.AddScoped<ILibraryService, LibraryService>();     
+        services.AddScoped<IUserRepository, EFUserRepository>();
+        services.AddScoped<IUserService, UserService>();     
 
         services.AddDbContext<BookmateAppDbContext>(opt => opt.UseSqlServer(connectionString));
         return services;

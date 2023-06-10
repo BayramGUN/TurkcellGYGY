@@ -48,7 +48,7 @@ public class MapProfile : Profile
 
         // Book
         CreateMap<CreateBookRequest, Book>();
-        CreateMap<UpdateBookRequest, Book>();
+        CreateMap<UpdateBookRequest, Book>().ReverseMap();
 
         // Genre
         CreateMap<CreateGenreRequest, Genre>();

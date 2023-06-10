@@ -3,11 +3,13 @@ using BookmateApp.DTOs.Responses;
 using BookmateApp.Entities;
 using BookmateApp.Mvc.Models;
 using BookmateApp.Services.ServiceInterfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookmateApp.Mvc.Controllers
 {
+    [Authorize]
     public class BookController : Controller
     {
         private readonly IBookService _bookService;
@@ -38,7 +40,26 @@ namespace BookmateApp.Mvc.Controllers
 
             return View(createBookViewModel);
         }
-
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var bookForForUpdate = await _bookService.GetBookForUpdateAsync(id);
+            return View(bookForForUpdate);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(Guid id, UpdateBookRequest updateBookRequest)
+        {
+            if (await _bookService.IsBookExist(id))
+            {
+                if (ModelState.IsValid)
+                {
+                    await _bookService.UpdateBookAsync(updateBookRequest);
+                    return RedirectToAction(nameof(Index));
+                }
+                return View();
+            }
+            return NotFound();
+        }
         private async Task<CreateBookViewModel> createBookViewModelGenerator()
         {
             var authors = await _authorService.GetAllAuthorsAsync();

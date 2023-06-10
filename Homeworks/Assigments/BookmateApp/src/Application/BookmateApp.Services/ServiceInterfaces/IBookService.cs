@@ -10,6 +10,7 @@ public interface IBookService
 
     Task<BookDisplayResponse> GetBookByIdAsync(Guid id);
     Task<IList<BookDisplayResponse>> GetAllBooksAsync();
+    Task<UpdateBookRequest> GetBookForUpdateAsync(Guid id);
 
     Task<IList<BookDisplayResponse>> SearchBooksByTitleAsync(string title);
     Task UpdateBookAsync(UpdateBookRequest updateBookRequest);

@@ -39,6 +39,11 @@ public class BookService : IBookService
     {
         var book = await _bookRepository.GetAsync(id);
         return book.ConvertToBookDisplayResponse(_mapper);
+    } 
+    public async Task<UpdateBookRequest> GetBookForUpdateAsync(Guid id)
+    {
+        var book = await _bookRepository.GetAsync(id);
+        return book.ConvertToUpdateBookRequest(_mapper);
     }
 
     public async Task<IEnumerable<BookDisplayResponse>> GetBooksByGenreAsync(Guid genreId)
