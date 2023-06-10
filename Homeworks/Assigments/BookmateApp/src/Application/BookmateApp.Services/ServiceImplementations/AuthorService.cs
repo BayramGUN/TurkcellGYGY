@@ -61,11 +61,7 @@ public class AuthorService : IAuthorService
 
     public async Task UpdateAuthorAsync(UpdateAuthorRequest updateAuthorRequest)
     {
-    
-    
-    
         var updateAuthor = updateAuthorRequest.ConvertFromUpdateAuthorRequest(_mapper);
         await _authorRepository.UpdateAsync(updateAuthor);
-    
     }
 }

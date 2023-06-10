@@ -46,7 +46,7 @@ public class EFAuthorRepository : IAuthorRepository
         await _context.Authors!.AsNoTracking().Where(a => a.Firstname.Contains(name)).ToListAsync();
         
     public async Task<bool> IsExistAsync(Guid id) =>
-        await _context.Authors!.FirstOrDefaultAsync(entity => entity.Id == id) is not null;
+        await _context.Authors!.AnyAsync(entity => entity.Id == id);
         
     public async Task UpdateAsync(Author entity)
     {

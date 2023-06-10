@@ -56,7 +56,7 @@ public class EFBookRepository : IBookRepository
                              .ToListAsync();
         
     public async Task<bool> IsExistAsync(Guid id) =>
-        await _context.Books!.SingleOrDefaultAsync(entity => entity.Id == id) is not null;
+        await _context.Books!.AnyAsync(entity => entity.Id == id);
 
     public async Task UpdateAsync(Book entity)
     {

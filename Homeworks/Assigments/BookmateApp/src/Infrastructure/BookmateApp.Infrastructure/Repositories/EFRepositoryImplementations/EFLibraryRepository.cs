@@ -38,7 +38,7 @@ public class EFLibraryRepository : ILibraryRepository
                              .SingleOrDefaultAsync(Library => Library.Id == id);
 
     public async Task<bool> IsExistAsync(Guid id) =>
-        await _context.Libraries!.SingleOrDefaultAsync(entity => entity.Id == id) is not null;
+        await _context.Libraries!.AnyAsync(entity => entity.Id == id);
 
     public async Task UpdateAsync(Library entity)
     {

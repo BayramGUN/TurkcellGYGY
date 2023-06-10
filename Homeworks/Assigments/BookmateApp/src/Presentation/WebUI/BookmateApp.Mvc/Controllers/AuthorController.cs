@@ -20,6 +20,13 @@ namespace BookmateApp.Mvc.Controllers
             var authors = await _authorService.GetAllAuthorsAsync();
             return View(authors);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var authorForUpdate = await _authorService.GetAuthorForUpdateAsync(id);
+            return View(authorForUpdate);
+        }
         public IActionResult CreateAuthor()
         {
             return View();

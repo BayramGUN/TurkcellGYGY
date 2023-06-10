@@ -37,7 +37,7 @@ public class EFGenreRepository : IGenreRepository
                               .SingleOrDefaultAsync(genre => genre.Id == id);
 
     public async Task<bool> IsExistAsync(Guid id) =>
-        await _context.Genres!.SingleOrDefaultAsync(entity => entity.Id == id) is not null;
+        await _context.Genres!.AnyAsync(entity => entity.Id == id);
 
 
     public async Task UpdateAsync(Genre entity)
