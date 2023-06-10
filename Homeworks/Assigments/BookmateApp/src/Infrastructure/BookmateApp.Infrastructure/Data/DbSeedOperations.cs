@@ -15,9 +15,9 @@ public static class DbSeedOperations
 
     private static void seedUserIFNotExist(BookmateAppDbContext dbContext)
     {
-        if(!dbContext.Users!.Any())
+        if(!dbContext.Participants!.Any())
         {
-            var users = new List<User> {
+            var participants = new List<Participant> {
                 new()
                 {
                     Id = new Guid("b59286b9-9915-4dc0-af94-a016327fed4c"),
@@ -43,6 +43,8 @@ public static class DbSeedOperations
                     Email = "loggeremail@example.com",
                 }
             };
+            dbContext.Participants!.AddRange(participants);
+            dbContext.SaveChanges();
         }
     }
 

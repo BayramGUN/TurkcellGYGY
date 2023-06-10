@@ -1,12 +1,7 @@
 ﻿using BookmateApp.Entities;
 using BookmateApp.Infrastructure.Data;
-using BookmateApp.Infrastructure.Repositories.RepsitoryInterfaces;
+using BookmateApp.Infrastructure.Repositories.RepositoryInterfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BookmateApp.Infrastructure.Repositories.EFRepositoryImplementations;
 public class EFUserRepository : IUserRepository
@@ -18,9 +13,9 @@ public class EFUserRepository : IUserRepository
         _context = context;
     }
 
-    public async Task CreateAsync(User entity)
+    public async Task CreateAsync(Participant entity)
     {
-        await _context.Users.AddAsync(entity);
+        await _context.Participants.AddAsync(entity);
         await _context.SaveChangesAsync();
     }
 
@@ -29,28 +24,28 @@ public class EFUserRepository : IUserRepository
         throw new NotImplementedException();
     }
 
-    public Task<IList<User>> GetAllAsync()
+    public Task<IList<Participant>> GetAllAsync()
     {
         throw new NotImplementedException();
     }
 
-    public async Task<User?> GetAsync(Guid id)
+    public async Task<Participant?> GetAsync(Guid id)
     {
-        var user = await _context.Users!.AsNoTracking().SingleOrDefaultAsync(user => user.Id == id);
+        var user = await _context.Participants!.AsNoTracking().SingleOrDefaultAsync(user => user.Id == id);
         return user; 
     }
 
-    public async Task<User> GetUserByUsername(string username)
+    public async Task<Participant> GetUserByUsernameAsync(string username)
     {
-        var user = await _context.Users!.SingleOrDefaultAsync(
+        var user = await _context.Participants!.SingleOrDefaultAsync(
             entity => entity.Username == username);
         return user;
     }
 
     public async Task<bool> IsExistAsync(Guid id) =>
-        await _context.Users.AsNoTracking().AnyAsync(entity => entity.Id == id);
+        await _context.Participants.AsNoTracking().AnyAsync(entity => entity.Id == id);
 
-    public Task UpdateAsync(User entity)
+    public Task UpdateAsync(Participant entity)
     {
         throw new NotImplementedException();
     }

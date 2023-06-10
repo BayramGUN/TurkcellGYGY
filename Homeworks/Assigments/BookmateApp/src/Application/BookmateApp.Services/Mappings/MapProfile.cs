@@ -41,6 +41,9 @@ public class MapProfile : Profile
                 opt => opt.MapFrom(src => src.BooksLibrary!.Select(bookLibrary => bookLibrary.Book!.Title))
             );
 
+        // User
+        CreateMap<Participant, UserResponse>();
+
         // For Commands
         // Author
         CreateMap<UpdateAuthorRequest, Author>().ReverseMap();
@@ -56,5 +59,8 @@ public class MapProfile : Profile
         // Library
         CreateMap<CreateLibraryRequest, Library>();
         CreateMap<UpdateLibraryRequest, Library>();
+
+        // User
+        CreateMap<UserLoginRequest, Participant>();
     }
 }

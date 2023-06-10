@@ -1,7 +1,7 @@
 using BookmateApp.Infrastructure.Data;
 using BookmateApp.Infrastructure.Repositories.EFRepositoryImplementations;
+using BookmateApp.Infrastructure.Repositories.RepositoryInterfaces;
 using BookmateApp.Infrastructure.Repositories.RepositoryInterFaces;
-using BookmateApp.Infrastructure.Repositories.RepsitoryInterfaces;
 using BookmateApp.Services.ServiceImplementations;
 using BookmateApp.Services.ServiceInterfaces;
 using Microsoft.EntityFrameworkCore;

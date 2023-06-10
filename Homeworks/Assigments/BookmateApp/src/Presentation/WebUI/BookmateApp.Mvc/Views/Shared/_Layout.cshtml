@@ -31,6 +31,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Author" asp-action="CreateAuthor">Yazar İşlemleri</a>
                         </li>
+                        @if(User.Identity.IsAuthenticated)
+                        {                          
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Logout">@User.Identity.Name <b>(Çıkış Yap)</b> </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Login"><b>(Giriş Yap)</b> </a>
+                            </li>
+                        }
                         @await Component.InvokeAsync("ListLink")
                     </ul>
                 </div>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BookmateApp.Entities;
 
-public class User : IEntity
+public class Participant : IEntity
 {
     public Guid Id { get; set; }
     [Required]
