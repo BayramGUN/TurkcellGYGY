@@ -1,11 +1,35 @@
-# Veri Tabanı Diagramı:
+# BookmateApp Kütüphane Paylaşım Uygulaması
 
-[url=https://www.hizliresim.com/qxkmoky][img]https://i.hizliresim.com/qxkmoky.png[/img][/url]
+Bu uygulamada amaç, kullanıcıların birçok kütüphane oluşturabilmelerine ve bu kütüphaneleri paylaşmalarını sağlamaktır. Projenin ilk aşaması kütüphane oluşturma sistemidir. 
 
-# Ana Sayfa (Kayıtlı tüm kitaplar getirilir):
+## Uygulama İçerisinden Ekran Görüntüleri:
 
-[url=https://www.hizliresim.com/4kuzz6h][img]https://i.hizliresim.com/4kuzz6h.png[/img][/url]
+1. Veri Tabanı Diagramı:
+   ![photo-1](https://i.hizliresim.com/qxkmoky.png)
 
-# Kullanıcı Girişi Yapılmış Ana Sayfa:
+2. Ana Sayfa (Kayıtlı Tüm Kitaplar Getirilir):
+   ![photo-2](https://www.hizliresim.com/4kuzz6h)
 
-[url=https://www.hizliresim.com/n9giam1][img]https://i.hizliresim.com/n9giam1.png[/img][/url]
+3. Kullanıcı Girişi Yapılmış Ana Sayfa:
+   ![photo-3](https://www.hizliresim.com/n9giam1)
+
+4. Kaydedilmiş Yazarların Listelenmesi:
+   ![photo-4](https://www.hizliresim.com/dutv8yv)
+
+5. Yazar Ekleme Ekranı:
+   ![photo-5](https://www.hizliresim.com/hdza085)
+
+6. Yazar Güncelleme Ekranı:
+   ![photo-6](https://www.hizliresim.com/564ay7f)
+
+7. Kayıtlı Kitapların Listelenmesi:
+   ![photo-7](https://www.hizliresim.com/io6rvfr)
+
+8. Kitap Ekleme Ekranı:
+   ![photo-8](https://imgyukle.com/i/rHm348)
+
+9. Kitap Güncelleme Ekranı:
+   ![photo-9](https://www.hizliresim.com/shduk2h)
+
+10. "Session" ile Oluşturulmuş Geçici Kitap Listesi:
+    ![photo-10](https://www.hizliresim.com/4s5e0l7)
