@@ -1,35 +1,49 @@
 # BookmateApp Kütüphane Paylaşım Uygulaması
 
-Bu uygulamada amaç, kullanıcıların birçok kütüphane oluşturabilmelerine ve bu kütüphaneleri paylaşmalarını sağlamaktır. Projenin ilk aşaması kütüphane oluşturma sistemidir. 
+Bu uygulamada amaç, kullanıcıların bir çok kütüphane oluşturabilmelerine ve bu <br>
+kütüphaneleri paylaşmasın sağlamaktır. Projenin ilk aşaması kütüphane oluşturma sistemidir. 
+
 
 ## Uygulama İçerisinden Ekran Görüntüleri:
 
-1. Veri Tabanı Diagramı:
-   ![photo-1](https://i.hizliresim.com/qxkmoky.png)
 
-2. Ana Sayfa (Kayıtlı Tüm Kitaplar Getirilir):
-   ![photo-2](https://www.hizliresim.com/4kuzz6h)
+### Veri Tabanı Diagramı:
 
-3. Kullanıcı Girişi Yapılmış Ana Sayfa:
-   ![photo-3](https://www.hizliresim.com/n9giam1)
+<img src="https://i.hizliresim.com/qxkmoky.png" alt="photo-1"/><br>
 
-4. Kaydedilmiş Yazarların Listelenmesi:
-   ![photo-4](https://www.hizliresim.com/dutv8yv)
+### Ana Sayfa (Kayıtlı tüm kitaplar getirilir):
 
-5. Yazar Ekleme Ekranı:
-   ![photo-5](https://www.hizliresim.com/hdza085)
+<img src="https://www.hizliresim.com/4kuzz6h" alt="photo-2"/><br>
 
-6. Yazar Güncelleme Ekranı:
-   ![photo-6](https://www.hizliresim.com/564ay7f)
+### Kullanıcı Girişi Yapılmış Ana Sayfa:
 
-7. Kayıtlı Kitapların Listelenmesi:
-   ![photo-7](https://www.hizliresim.com/io6rvfr)
+<img src="https://www.hizliresim.com/n9giam1" alt="photo-3"/><br>
 
-8. Kitap Ekleme Ekranı:
-   ![photo-8](https://imgyukle.com/i/rHm348)
+### Kaydedilmiş Yazarların Listelenmesi:
 
-9. Kitap Güncelleme Ekranı:
-   ![photo-9](https://www.hizliresim.com/shduk2h)
+<img src="https://www.hizliresim.com/dutv8yv" alt="photo-4"/><br>
 
-10. "Session" ile Oluşturulmuş Geçici Kitap Listesi:
-    ![photo-10](https://www.hizliresim.com/4s5e0l7)
+### Yazar Ekleme Ekranı:
+
+<img src="https://www.hizliresim.com/hdza085" alt="photo-5"/><br>
+
+### Yazar Güncelleme Ekranı:
+
+<img src="https://www.hizliresim.com/564ay7f" alt="photo-6"/><br>
+
+### Kayıtlı Kitapların Listelenmesi:
+
+<img src="https://www.hizliresim.com/io6rvfr" alt="photo-7"/><br>
+
+### Kitap Ekleme Ekranı:
+
+<img src="https://imgyukle.com/i/rHm348" alt="photo-8"/><br>
+
+### Kitap Güncelleme Ekranı:
+
+<img src="https://www.hizliresim.com/shduk2h" alt="photo-8"/><br>
+
+### "Session" ile Oluşturulmuş Geçici Kitap Listesi:
+
+<img src="https://www.hizliresim.com/4s5e0l7" alt="photo-9"/><br>
+
