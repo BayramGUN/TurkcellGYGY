@@ -6,6 +6,7 @@ using BookmateApp.Mvc.Models;
 using BookmateApp.Services.ServiceInterfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.DotNet.Scaffolding.Shared.Messaging;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BookmateApp.Mvc.Controllers;
 
@@ -54,7 +55,7 @@ public class LibraryController : Controller
     private void saveToSession(BookCollection bookCollection) => 
         HttpContext.Session.SetJson(librarySesion, bookCollection);
 
-
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> CreateLibraryAsync(Guid[] selectedBooks, BookCollection listItem)
     {
