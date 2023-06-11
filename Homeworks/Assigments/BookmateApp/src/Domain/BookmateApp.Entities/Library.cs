@@ -8,6 +8,6 @@ public class Library : IEntity
     [Required]
     [MaxLength(100)]
     public string Title { get; set; } = "Library";
-    public int Rate { get; set; }
+    public float Rate { get; set; }
     public IList<BooksLibrary>? BooksLibrary { get; set; }
 }

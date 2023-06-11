@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using BookmateApp.Entities;
 using BookmateApp.Infrastructure.Data;
 using BookmateApp.Infrastructure.Repositories.RepositoryInterFaces;
@@ -17,6 +18,7 @@ public class EFLibraryRepository : ILibraryRepository
     public async Task CreateAsync(Library entity)
     {
         await _context.Libraries!.AddAsync(entity);
+        Debug.WriteLine(entity);
         await _context.SaveChangesAsync();
     }
 

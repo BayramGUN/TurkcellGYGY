@@ -28,7 +28,7 @@ public class BookmateAppDbContext : DbContext
                     .WithMany(bookLibrary => bookLibrary.BooksLibrary)
                     .HasForeignKey(libraryId => libraryId.LibraryId);
 
-        modelBuilder.Entity<Participant>().HasIndex(u => u.Username).IsUnique();
+        // modelBuilder.Entity<Participant>().HasIndex(u => u.Username).IsUnique();
 
     }
 

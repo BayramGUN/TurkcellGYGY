@@ -15,7 +15,7 @@ public class EFUserRepository : IUserRepository
 
     public async Task CreateAsync(Participant entity)
     {
-        await _context.Participants.AddAsync(entity);
+        await _context.Participants!.AddAsync(entity);
         await _context.SaveChangesAsync();
     }
 

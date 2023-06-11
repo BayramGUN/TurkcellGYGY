@@ -6,9 +6,11 @@ namespace BookmateApp.DTOs.Requests;
     public IList<BooksLibrary>? BooksLibrary { get; set; } */
 public class CreateLibraryRequest
 {
-    [Required(ErrorMessage = "Kütüphane ismi girmelisiniz!")]
-    [MaxLength(100, ErrorMessage = "Kütüphane ismi en fazla 100 karakter içerebilir!")]
+    public Guid Id { get; set; }
+    [Required(ErrorMessage = "KÃ¼tÃ¼phane ismi girmelisiniz!")]
+    [MaxLength(100, ErrorMessage = "KÃ¼tÃ¼phane ismi en fazla 100 karakter iÃ§erebilir!")]
     public string Title { get; set; } = "Library";
-    public int Rate { get; set; }
+    public float Rate { get; set; }
+    public IList<Guid>? Books { get; set; }
     
 }

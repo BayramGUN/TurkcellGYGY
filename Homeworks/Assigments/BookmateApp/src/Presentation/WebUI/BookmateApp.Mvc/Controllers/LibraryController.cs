@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using BookmateApp.DTOs.Requests;
 using BookmateApp.DTOs.Responses;
 using BookmateApp.Mvc.Extensions;
 using BookmateApp.Mvc.Models;
@@ -11,10 +12,12 @@ namespace BookmateApp.Mvc.Controllers;
 public class LibraryController : Controller
 {
     private readonly IBookService _bookService;
+    private readonly ILibraryService _libraryService;
     private const string librarySesion = "library";
-    public LibraryController(IBookService bookService)
+    public LibraryController(IBookService bookService, ILibraryService libraryService)
     {
         _bookService = bookService;
+        _libraryService = libraryService;
     }
 
     public IActionResult Index()
@@ -35,26 +38,35 @@ public class LibraryController : Controller
         saveToSession(bookCollection);
         return Json(new { message = $"{selectedBook.Title} kütüphaneye eklendi"});
     }
-    public async Task<IActionResult> RemoveBook(Guid bookId)
+    public async Task<IActionResult> RemoveBook([FromRoute]Guid id)
     {
-        Debug.WriteLine(bookId);
-        BookDisplayResponse selectedBook = await _bookService.GetBookByIdAsync(bookId);
-        var bookListItem = new BookListItem {
-            Book = selectedBook
-        };
+        Debug.WriteLine(id);
+        
         BookCollection bookCollection = getBookCollectionFromSession();
-        bookCollection.RemoveBook(bookListItem);
-        return View("Index");
+        bookCollection.RemoveBook(id);
+        saveToSession(bookCollection);
+
+        return View(nameof(Index), bookCollection);
     }
 
-    private BookCollection getBookCollectionFromSession()
-    {
-        return HttpContext.Session.GetJson<BookCollection>(librarySesion) ?? new BookCollection();
-    }
-    private void saveToSession(BookCollection bookCollection)
-    {
+    private BookCollection getBookCollectionFromSession() => 
+        HttpContext.Session.GetJson<BookCollection>(librarySesion) ?? new BookCollection();
+    private void saveToSession(BookCollection bookCollection) => 
         HttpContext.Session.SetJson(librarySesion, bookCollection);
+
+
+    [HttpPost]
+    public async Task<IActionResult> CreateLibraryAsync(Guid[] selectedBooks, BookCollection listItem)
+    {
+        var libraryRequest = new CreateLibraryRequest {
+            Id = Guid.NewGuid(),
+            Title = listItem.LibraryName,
+            Books = selectedBooks,
+        };
+        await _libraryService.CreateLibraryAsync(libraryRequest);
+        BookCollection bookCollection = getBookCollectionFromSession();
+
+        return RedirectToAction(nameof(Index), bookCollection);
     }
-   
 
 }

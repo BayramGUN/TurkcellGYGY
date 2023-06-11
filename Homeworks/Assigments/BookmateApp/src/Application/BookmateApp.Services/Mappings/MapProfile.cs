@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using AutoMapper;
 using BookmateApp.DTOs.Requests;
 using BookmateApp.DTOs.Responses;
@@ -57,7 +58,16 @@ public class MapProfile : Profile
         CreateMap<CreateGenreRequest, Genre>();
 
         // Library
-        CreateMap<CreateLibraryRequest, Library>();
+        CreateMap<CreateLibraryRequest, Library>()
+            .ForMember(
+                dest => dest.BooksLibrary,
+                opt => opt.MapFrom(
+                    src => (src.Books != null) ? 
+                    src.Books.Select(
+                        b => new BooksLibrary { BookId = b, LibraryId = src.Id })
+                        : null 
+                ));
+
         CreateMap<UpdateLibraryRequest, Library>();
 
         // User

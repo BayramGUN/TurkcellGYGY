@@ -17,4 +17,13 @@ public static class LibraryMappingExtensions
         mapper.Map<Library>(libraryRequest);
     public static Library ConvertFromUpdateLibraryRequest(this UpdateLibraryRequest updateLibraryRequest, IMapper mapper) => 
         mapper.Map<Library>(updateLibraryRequest);
+
+    public static Library CreateLibraryHandle(this CreateLibraryRequest request, IMapper mapper)
+    {
+        var library = new Library {
+            Title = request.Title,
+            Rate = request.Rate
+        };
+        return library;
+    }
 }

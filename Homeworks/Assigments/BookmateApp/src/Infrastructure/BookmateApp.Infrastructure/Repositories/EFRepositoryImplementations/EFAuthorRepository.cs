@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Linq.Expressions;
 using BookmateApp.Entities;
 using BookmateApp.Infrastructure.Data;
@@ -17,8 +18,8 @@ public class EFAuthorRepository : IAuthorRepository
 
     public async Task CreateAsync(Author entity)
     {
-        await _context.Authors!.AddAsync(entity);
-        await _context.SaveChangesAsync();
+        var user = _context.Authors!.AddAsync(entity);
+        var createdEntity = user.Result.Entity.Id;
     } 
 
 

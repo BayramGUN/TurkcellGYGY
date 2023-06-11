@@ -5,9 +5,10 @@ namespace BookmateApp.Mvc.Models;
 public class BookCollection
 {
     public List<BookListItem> BookListItems { get; set; } = new List<BookListItem>();
+    public string? LibraryName { get; set; }
     public void ClearAll() => BookListItems.Clear();
     public int TotalBookRates() => BookListItems.Sum(item => (int)item.Book.Rate);
-    public double AvarageBookRates() => (double) TotalBookRates() / BookListItems.Count;
+    public float AvarageBookRates() => (float) TotalBookRates() / BookListItems.Count;
 
     public void AddBook(BookListItem bookListItem)
     {
@@ -18,12 +19,10 @@ public class BookCollection
             BookListItems.Add(bookListItem);
         
     }
-    public void RemoveBook(BookListItem bookListItem)
+    public void RemoveBook(Guid id)
     {
-        
-            BookListItems.Remove(bookListItem);
-            bookListItem.IsAdded = false;
-        
+            var bookListItem = BookListItems.FirstOrDefault(bI => bI.Book.Id == id);
+            BookListItems.Remove(bookListItem);        
     }
     private bool isExist(BookListItem bookListItem) =>
         BookListItems.FirstOrDefault(b => b.Book.Id == bookListItem.Book.Id) is not null;
