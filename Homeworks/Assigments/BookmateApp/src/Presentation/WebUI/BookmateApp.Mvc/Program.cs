@@ -35,6 +35,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
                 });
 
+builder.Services.AddMemoryCache();
+builder.Services.AddResponseCaching(opt =>
+{
+    opt.SizeLimit = 100000;
+});
 
 
 var app = builder.Build();
@@ -54,6 +59,7 @@ context.Database.EnsureCreated();
 DbSeedOperations.SeedDatabase(context);
 
 app.UseHttpsRedirection();
+app.UseResponseCaching();
 app.UseStaticFiles();
 app.UseSession();
 app.UseRouting();
