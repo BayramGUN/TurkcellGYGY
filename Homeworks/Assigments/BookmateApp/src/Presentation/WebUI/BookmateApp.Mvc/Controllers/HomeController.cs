@@ -28,17 +28,14 @@ namespace BookmateApp.Mvc.Controllers
         public async Task<IActionResult> Index(int pageNo, Guid? id = null)
         {  
 
-            var books = (id == null) ? await _bookService.GetAllBooksAsync() :
-                                       await _bookService.GetBooksByGenreAsync(id.Value);
+            var books = getBooksMemCacheOrDbAsync(id);
             var model = books.CreatePagination(pageNo);
 
             return View(model);
         }
 
-        private async Task<IList<BookDisplayResponse>> getBooksMemCacheOrDbAsync(Guid? id = null)
+        private async Task<IEnumerable<BookDisplayResponse>> getBooksMemCacheOrDbAsync(Guid? id = null)
         {
-            //Eğer; cache'de varsa cache'den çek yoksa kaynaktan çek ve cache'e at.
-
             if (!_memoryCache.TryGetValue("allBooks", out MemoryCacheData? cacheDataInfo))
             {
                 var options = new MemoryCacheEntryOptions()
@@ -56,8 +53,8 @@ namespace BookmateApp.Mvc.Controllers
 
 
             _logger.LogInformation($"{cacheDataInfo!.CacheTime.ToLongTimeString()} shows that created cache on this time");
-            return (IList<BookDisplayResponse>)((id == null) ? cacheDataInfo.Books :
-                                await _bookService.GetBooksByGenreAsync(id.GetValueOrDefault()));
+            return (id == null) ? cacheDataInfo.Books :
+                                await _bookService.GetBooksByGenreAsync(id.GetValueOrDefault());
 
         }
         public async Task<IActionResult> BookDetails(Guid id)
