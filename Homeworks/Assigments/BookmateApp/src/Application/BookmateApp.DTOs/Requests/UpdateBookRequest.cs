@@ -11,6 +11,7 @@ public class UpdateBookRequest
     public string? Description { get; set; }
     public int? Rate { get; set; }
     public string? CoverImageUrl { get; set; } = "https://picsum.photos/200/300";
+    public DateTime? PublishDate { get; set; }
     public bool? IsRead { get; set; }
     public Guid AuthorId { get; set; }
     public Guid GenreId { get; set; }

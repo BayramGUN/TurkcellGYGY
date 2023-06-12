@@ -36,15 +36,16 @@ namespace BookmateApp.Mvc.Controllers
         public async Task<IActionResult> CreateBook()
         {
 
-            var createBookViewModel = await createBookViewModelGenerator();
+            var createBookViewModel = await bookViewModelGenerator();
 
             return View(createBookViewModel);
         }
         [HttpGet]
         public async Task<IActionResult> Edit(Guid id)
         {
-            var bookForForUpdate = await _bookService.GetBookForUpdateAsync(id);
-            return View(bookForForUpdate);
+            var bookForUpdate = await _bookService.GetBookForUpdateAsync(id);
+            var updateBookModel = await bookViewModelGenerator(bookForUpdate);
+            return View(updateBookModel);
         }
         [HttpPost]
         public async Task<IActionResult> Edit(Guid id, UpdateBookRequest updateBookRequest)
@@ -60,18 +61,20 @@ namespace BookmateApp.Mvc.Controllers
             }
             return NotFound();
         }
-        private async Task<CreateBookViewModel> createBookViewModelGenerator()
+        private async Task<BookViewModel> bookViewModelGenerator(UpdateBookRequest? updateBookRequest = null)
         {
             var authors = await _authorService.GetAllAuthorsAsync();
             var genres = await _genreService.GetAllGenresAsync();
-            CreateBookViewModel createBookViewModel = new CreateBookViewModel
+            BookViewModel bookViewModel = new BookViewModel
             {
-                Request = new DTOs.Requests.CreateBookRequest(),
+                CreateRequest = new CreateBookRequest(),
                 AuthorItems = authors.Select(a => new SelectListItem { Text = a.FullName, Value = a.Id.ToString() }),
                 GenreItems = genres.Select(g => new SelectListItem { Text = g.Name, Value = g.Id.ToString() }),
             };
-            return createBookViewModel;
+            if(updateBookRequest is not null) bookViewModel.UpdateRequest = updateBookRequest;
+            return bookViewModel;
         }
+    
 
         [HttpPost]
         public async Task<IActionResult> CreateBook(CreateBookRequest request)
@@ -81,7 +84,7 @@ namespace BookmateApp.Mvc.Controllers
                 await _bookService.CreateBookAsync(request);
                 return RedirectToAction("Index");
             }
-            var createBookViewModel = await createBookViewModelGenerator();
+            var createBookViewModel = await bookViewModelGenerator();
             return View(createBookViewModel); 
            
         }

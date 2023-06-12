@@ -1,4 +1,4 @@
-﻿@model CreateBookViewModel
+﻿@model BookViewModel
 @{
     ViewData["Title"] = "CreateBook";
 }
@@ -12,46 +12,46 @@
         <form asp-action="CreateBook">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="@Model.Request.Title" class="control-label"></label>
-                <input asp-for="@Model.Request.Title" class="form-control" />
-                <span asp-validation-for="@Model.Request.Title" class="text-danger"></span>
+                <label asp-for="@Model.CreateRequest.Title" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.Title" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Request.Description" class="control-label"></label>
-                <input asp-for="@Model.Request.Description" class="form-control" />
-                <span asp-validation-for="@Model.Request.Description" class="text-danger"></span>
+                <label asp-for="@Model.CreateRequest.Description" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.Description" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Request.Rate" class="control-label"></label>
-                <input asp-for="@Model.Request.Rate" class="form-control" />
-                <span asp-validation-for="@Model.Request.Rate" class="text-danger"></span>
+                <label asp-for="@Model.CreateRequest.Rate" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.Rate" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.Rate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Request.CoverImageUrl" class="control-label"></label>
-                <input asp-for="@Model.Request.CoverImageUrl" class="form-control" />
-                <span asp-validation-for="@Model.Request.CoverImageUrl" class="text-danger"></span>
+                <label asp-for="@Model.CreateRequest.CoverImageUrl" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.CoverImageUrl" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.CoverImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Request.IsRead" class="control-label"></label>
-                <input asp-for="@Model.Request.IsRead" class="form-control" />
-                <span asp-validation-for="@Model.Request.IsRead" class="text-danger"></span>
+                <label asp-for="@Model.CreateRequest.IsRead" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.IsRead" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.IsRead" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Request.AuthorId" class="control-label"></label>
-                <select asp-for="@Model.Request.AuthorId" class="form-control" asp-items="@Model.AuthorItems">
+                <label asp-for="@Model.CreateRequest.AuthorId" class="control-label"></label>
+                <select asp-for="@Model.CreateRequest.AuthorId" class="form-control" asp-items="@Model.AuthorItems">
                 </select>
-                <span asp-validation-for="@Model.Request.AuthorId" class="text-danger"></span>
+                <span asp-validation-for="@Model.CreateRequest.AuthorId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Request.GenreId" class="control-label"></label>
-                <select asp-for="@Model.Request.GenreId" class="form-control" asp-items="@Model.GenreItems">
+                <label asp-for="@Model.CreateRequest.GenreId" class="control-label"></label>
+                <select asp-for="@Model.CreateRequest.GenreId" class="form-control" asp-items="@Model.GenreItems">
                 </select>
-                <span asp-validation-for="@Model.Request.GenreId" class="text-danger"></span>
+                <span asp-validation-for="@Model.CreateRequest.GenreId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="@Model.Request.PublishDate" class="control-label"></label>
-                <input asp-for="@Model.Request.PublishDate" class="form-control" />
-                <span asp-validation-for="@Model.Request.PublishDate" class="text-danger"></span>
+                <label asp-for="@Model.CreateRequest.PublishDate" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.PublishDate" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.PublishDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
