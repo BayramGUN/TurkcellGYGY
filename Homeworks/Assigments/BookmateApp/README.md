@@ -40,7 +40,7 @@ kütüphaneleri paylaşmasın sağlamaktır. Projenin ilk aşaması kütüphane 
 <img src="https://i.hizliresim.com/4du3aba.png" alt="photo-8"/><br>
 
 ### Kitap Güncelleme Ekranı:
-<img src="https://www.hizliresim.com/mkichwm.png" alt="photo-9"/><br>
+<img src="https://i.hizliresim.com/mkichwm.png" alt="photo-9"/><br>
 
 ### "Session" ile Oluşturulmuş Geçici Kitap Listesi:
 
